@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : fsp
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : 120.78.139.183:3306
+ Source Server Version : 50724
+ Source Host           : localhost:3306
  Source Schema         : smart_canteen
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 03/06/2019 11:23:55
+ Date: 03/06/2019 13:50:29
 */
 
 SET NAMES utf8mb4;

@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : fsp
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : 120.78.139.183:3306
+ Source Server Version : 50724
+ Source Host           : localhost:3306
  Source Schema         : smart_canteen
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 03/06/2019 11:23:49
+ Date: 03/06/2019 13:50:23
 */
 
 SET NAMES utf8mb4;
@@ -26,8 +26,8 @@ CREATE TABLE `order`  (
   `orderid` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '',
   `createtime` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `remark` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
-  `status` int(11) NULL DEFAULT NULL,
-  `total` double NULL DEFAULT NULL,
+  `status` int(1) NULL DEFAULT NULL,
+  `total` double(11, 0) NULL DEFAULT NULL,
   PRIMARY KEY (`id`, `orderid`) USING BTREE
 ) ENGINE = InnoDB AUTO_INCREMENT = 7 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 

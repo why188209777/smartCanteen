@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : fsp
+ Source Server         : localhost
  Source Server Type    : MySQL
- Source Server Version : 80015
- Source Host           : 120.78.139.183:3306
+ Source Server Version : 50724
+ Source Host           : localhost:3306
  Source Schema         : smart_canteen
 
  Target Server Type    : MySQL
- Target Server Version : 80015
+ Target Server Version : 50724
  File Encoding         : 65001
 
- Date: 03/06/2019 11:23:27
+ Date: 03/06/2019 13:49:57
 */
 
 SET NAMES utf8mb4;
@@ -26,7 +26,7 @@ CREATE TABLE `canteen`  (
   `cname` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   `description` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
   PRIMARY KEY (`cid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of canteen
