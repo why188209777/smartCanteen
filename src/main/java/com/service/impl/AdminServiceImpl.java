@@ -11,14 +11,16 @@ public class AdminServiceImpl implements AdminService {
 	@Autowired
 	private AdminDao adminDao;
 
-	public void setAdminDao(AdminDao adminDao) {
-		this.adminDao = adminDao;
-	}
+
 
 	@Override
 	public Admin login(String aname, String password) {
 		// TODO Auto-generated method stub
 		return adminDao.login(aname, password);
+	}
+	
+	public static void main(String[] args) {
+		System.out.println(new AdminServiceImpl().login("马云", "123456"));
 	}
 
 }
