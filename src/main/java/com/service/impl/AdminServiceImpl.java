@@ -16,9 +16,9 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public Admin getAdminById(int id) {
+	public Admin login(String aname, String password) {
 		// TODO Auto-generated method stub
-		return adminDao.getAdminById(id);
+		return adminDao.login(aname, password);
 	}
 
 }
