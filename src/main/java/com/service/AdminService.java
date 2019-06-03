@@ -3,5 +3,5 @@ import com.model.Admin;
 
 public interface AdminService {
 
-	public Admin getAdminById(int id);
+	public Admin login(String aname, String password);
 }

@@ -8,7 +8,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dao.AdminDao;
 import com.model.Admin;
-import com.service.AdminService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-mybatis.xml")
@@ -18,8 +17,8 @@ public class AdminTest {
 	private AdminDao adminDao;
 	
 	@Test
-	public void getAdminById(){
-		Admin admin = adminDao.getAdminById(1);
+	public void login(){
+		Admin admin = adminDao.login("马云", "123456");
 		System.out.println(admin);
 	}
 	
