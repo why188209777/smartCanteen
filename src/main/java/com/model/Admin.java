@@ -7,6 +7,15 @@ public class Admin {
 	private String password;
 	private String phonenum;
 	
+	
+	
+	public Admin(int id, String aname, String password, String phonenum) {
+		super();
+		this.id = id;
+		this.aname = aname;
+		this.password = password;
+		this.phonenum = phonenum;
+	}
 	public int getId() {
 		return id;
 	}

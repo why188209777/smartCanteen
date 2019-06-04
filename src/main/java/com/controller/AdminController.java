@@ -17,9 +17,10 @@ public class AdminController {
 	private AdminService adminService;
 
 	@RequestMapping(value="login")
-	public String login(String aname, String password, ModelMap map){
+	public Admin login(String aname, String password, ModelMap map){
 		map.addAttribute("aname", aname);
 		Admin admin = adminService.login(aname, password);
-		return admin == null ? "error" : "adminSuccess";
+		//return admin == null ? "error" : "adminSuccess";
+		return admin;
 	}
 }
