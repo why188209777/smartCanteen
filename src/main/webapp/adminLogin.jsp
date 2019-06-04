@@ -24,7 +24,7 @@
 </head>
 
 <body>
-	<form action="admin/login.do">
+	<form action="canteen/login.do">
 		用户名：<input type="text" name="aname"><br />
 		密码：<input type="password" name="password"><br />
 		<input type="submit" value="登录">
