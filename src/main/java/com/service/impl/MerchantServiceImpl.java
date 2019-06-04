@@ -3,16 +3,18 @@ package com.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.dao.ItemDao;
 import com.dao.MerchantDao;
 import com.model.Merchant;
 import com.service.MerchantService;
 
+@Service
 public class MerchantServiceImpl implements MerchantService {
 
 	@Autowired
 	private MerchantDao merchantDao;
+	
 	public void setMerchantDao(MerchantDao merchantDao) {
 		this .merchantDao=merchantDao;
 	}

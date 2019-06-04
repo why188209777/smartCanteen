@@ -6,7 +6,7 @@ import com.model.Order;
 
 public interface OrderDao {
 	public int addOrder(Order order);
-	public Order getOrderByOrderId(String orderid);
+	public Order getOrderByOrderId(String orderId);
 	public List<Order> getAllOrder();
-	public List<Order> getOrderByUserId(int userid);
+	public List<Order> getOrderByUserId(int userId);
 }

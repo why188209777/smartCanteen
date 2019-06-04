@@ -9,6 +9,19 @@ public class Order {
 	private double total;
 	private int userid;
 	
+	public Order(String orderid, String createtime, String remark, int status, double total, int userid) {
+		super();
+		this.orderid = orderid;
+		this.createtime = createtime;
+		this.remark = remark;
+		this.status = status;
+		this.total = total;
+		this.userid = userid;
+	}
+	public Order() {
+		super();
+	}
+	
 	public int getId() {
 		return id;
 	}
@@ -56,17 +69,5 @@ public class Order {
 		return "Order [id=" + id + ", orderid=" + orderid + ", createtime=" + createtime + ", remark=" + remark
 				+ ", status=" + status + ", total=" + total + ", userid=" + userid + "]";
 	}
-	public Order(String orderid, String createtime, String remark, int status, double total, int userid) {
-		super();
-		this.orderid = orderid;
-		this.createtime = createtime;
-		this.remark = remark;
-		this.status = status;
-		this.total = total;
-		this.userid = userid;
-	}
-	public Order() {
-		super();
-	}
-	
+
 }
