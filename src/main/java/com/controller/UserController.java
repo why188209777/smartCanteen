@@ -14,38 +14,44 @@ import com.service.UserService;
 public class UserController {
 	@Autowired
 	private UserService userService;
+
 	@RequestMapping(value = "addUser")
-	public String addUser(String uname, String idcard, String studentid, String classes, String password, String phonenum,
-			String address){
-		User user=new User(address, address, address, address, address, address, address);
-		int addUser=userService.addUser(user);
+	public String addUser(String uname, String idcard, String studentid, String classes, String password,
+			String phonenum, String address) {
+		User user = new User(address, address, address, address, address, address, address);
+		int addUser = userService.addUser(user);
 		return addUser == 0 ? "error" : "success";
 	}
+
 	@RequestMapping(value = "delUser")
-	public String delUser(String studentId){
-		int delUser=userService.delUser(studentId);
+	public String delUser(String studentId) {
+		int delUser = userService.delUser(studentId);
 		return delUser == 0 ? "error" : "success";
 	}
+
 	@RequestMapping(value = "updateUser")
-	public String updateUser(String uname, String idcard, String studentid, String classes, String password, String phonenum,
-			String address){
-		User user=new User(uname, idcard, studentid, classes, password, phonenum, address);
-		int updateuser=userService.updateUser(user);
+	public String updateUser(String uname, String idcard, String studentid, String classes, String password,
+			String phonenum, String address) {
+		User user = new User(uname, idcard, studentid, classes, password, phonenum, address);
+		int updateuser = userService.updateUser(user);
 		return updateuser == 0 ? "error" : "success";
 	}
+
 	@RequestMapping(value = "getAllUser")
-	public String getAllUser(){
-		List<User> users= userService.getAllUser();
+	public String getAllUser() {
+		List<User> users = userService.getAllUser();
 		return users == null ? "error" : "success";
 	}
+
 	@RequestMapping(value = "getUserByStudentId")
-	public String getUserByStudentId(String studentId){
-		User user=userService.getUserByStudentId(studentId);
+	public String getUserByStudentId(String studentId) {
+		User user = userService.getUserByStudentId(studentId);
 		return user == null ? "error" : "success";
 	}
+
 	@RequestMapping(value = "login")
-	public String login(String uname,String password){
-		User user=userService.login(uname, password);
+	public String login(String uname, String password) {
+		User user = userService.login(uname, password);
 		return user == null ? "error" : "success";
 	}
 }
