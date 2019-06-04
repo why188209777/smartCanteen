@@ -24,6 +24,11 @@ public class Merchant {
 		this.cid = cid;
 	}
 
+	public Merchant(int mid) {
+		super();
+		this.mid = mid;
+	}
+
 	public int getMid() {
 		return mid;
 	}
