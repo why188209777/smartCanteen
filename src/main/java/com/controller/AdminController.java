@@ -15,10 +15,6 @@ public class AdminController {
 
 	@Autowired
 	private AdminService adminService;
-	
-	public void setAdminService(AdminService adminService) {
-		this.adminService = adminService;
-	}
 
 	@RequestMapping(value="login")
 	public String login(ModelMap map){
