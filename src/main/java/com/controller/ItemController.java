@@ -2,13 +2,9 @@ package com.controller;
 
 import java.util.List;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.model.Item;
 import com.service.ItemService;
@@ -19,30 +15,16 @@ public class ItemController {
 	@Autowired
 	private ItemService itemService;
 
-	@RequestMapping(value = "add")
-	public String add(String itemid, HttpServletRequest request, HttpServletResponse response) {
-		String orderid = request.getParameter("orderid");
-		int foodid = Integer.parseInt(request.getParameter("foodid"));
-		String fname = request.getParameter("fname");
-		int price = Integer.parseInt(request.getParameter("price"));
-		int number = Integer.parseInt(request.getParameter("number"));
+	@RequestMapping(value = "addItem")
+	public String addItem(String orderid, int foodid, String fname, Double price, int number) {
 		Item item = new Item(orderid, foodid, fname, price, number);
-		int a = itemService.addItem(item);
-		if (a == 1) {
-			return "success";
-		} else {
-			return "error";
-		}
+		int addItem = itemService.addItem(item);
+		return addItem == 0 ? "error" : "success";
 	}
 
-	@RequestMapping(value = "getAll")
-	public ModelAndView getList() {
-		ModelAndView mav = new ModelAndView();
-		List<Item> iList = itemService.getItemByOrderId("1");
-		mav.addObject("ilist", iList);
-		mav.setViewName("getall");
-		return mav;
-
+	@RequestMapping(value = "getItemByOrderId")
+	public String getItemByOrderId(String orderId) {
+		List<Item> list = itemService.getItemByOrderId(orderId);
+		return list == null ? "error" : "success";
 	}
-
 }

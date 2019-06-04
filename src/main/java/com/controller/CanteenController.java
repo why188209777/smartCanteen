@@ -23,4 +23,17 @@ public class CanteenController {
 		int addcanteen = canteenService.addCanteen(canteen);
 		return addcanteen == 0 ? "error" : "success";
 	}
+
+	@RequestMapping(value = "updateCanteen")
+	public String updateCanteen(int cid, String cname, String description) {
+		Canteen canteen = new Canteen(cid, cname, description);
+		int updateCanteen = canteenService.updateCanteen(canteen);
+		return updateCanteen == 0 ? "error" : "success";
+	}
+
+	@RequestMapping(value = "getCanteenByCid")
+	public String getCanteenByCid(int cid) {
+		Canteen canteenByCid = canteenService.getCanteenByCid(cid);
+		return canteenByCid == null ? "error" : "success";
+	}
 }
