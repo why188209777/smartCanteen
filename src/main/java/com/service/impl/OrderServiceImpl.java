@@ -10,12 +10,11 @@ import com.model.Order;
 import com.service.OrderService;
 
 @Service
-public class OrderServiceImpl implements OrderService{
-	
+public class OrderServiceImpl implements OrderService {
+
 	@Autowired
 	private OrderDao orderDao;
-	
-	
+
 	public void setOrderdao(OrderDao orderDao) {
 		this.orderDao = orderDao;
 	}

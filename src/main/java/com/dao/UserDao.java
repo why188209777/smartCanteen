@@ -7,7 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import com.model.User;
 
 public interface UserDao {
-	
+
 	public int addUser(User user);
 
 	public int delUser(String studentId);

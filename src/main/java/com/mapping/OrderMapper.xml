@@ -3,18 +3,20 @@
 <mapper namespace="com.dao.OrderDao">
 	<!-- 添加 -->
 	<insert id="addOrder" parameterType="Order">
-		insert into orders (orderid,createtime,remark,status,total,userid) VALUES (#{orderid},#{createtime},#{remark},#{status},#{total},#{userid})
+		insert into orders
+		(orderid,createtime,remark,status,total,userid) VALUES
+		(#{orderid},#{createtime},#{remark},#{status},#{total},#{userid})
 	</insert>
-    <!-- 根据id查询 -->
-    <select id="getOrderByOrderId" resultType="Order">
-    	select * from orders where orderid=#{orderid}
-    </select>
-    <!-- 查询所有 -->
-    <select id="getAllOrder" resultType="Order">
-    	select * from orders
-    </select>
-    <!-- 根据userid查询 -->
-    <select id="getOrderByUserId" resultType="Order">
-    	select * from orders where userid=#{userid}
-    </select>
+	<!-- 根据id查询 -->
+	<select id="getOrderByOrderId" resultType="Order">
+		select * from orders where orderid=#{orderid}
+	</select>
+	<!-- 查询所有 -->
+	<select id="getAllOrder" resultType="Order">
+		select * from orders
+	</select>
+	<!-- 根据userid查询 -->
+	<select id="getOrderByUserId" resultType="Order">
+		select * from orders where userid=#{userid}
+	</select>
 </mapper>

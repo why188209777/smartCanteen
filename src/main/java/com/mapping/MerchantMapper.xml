@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.MerchantDao">
-	
+
 	<insert id="addMerchant" parameterType="Merchant">
-	insert into merchant(mname,description,cid) values(#{mname},#{description},#{cid});
+		insert into merchant(mname,description,cid)
+		values(#{mname},#{description},#{cid});
 	</insert>
-  <select id="getMerchantsByCid" resultType="Merchant">
-  select * from merchant where cid=#{cid}
-  </select>
-  <delete id="delMerchant" parameterType="Merchant">
-  delete from merchant where mid=#{mid}
-  </delete>
-  <update id="updateMerchant">
-  update merchant set mname=#{mname} ,description=#{description},cid=#{cid} where mid=#{mid}
-  </update>
+	<select id="getMerchantsByCid" resultType="Merchant">
+		select * from merchant where cid=#{cid}
+	</select>
+	<delete id="delMerchant" parameterType="Merchant">
+		delete from merchant where mid=#{mid}
+	</delete>
+	<update id="updateMerchant">
+		update merchant set mname=#{mname} ,description=#{description},cid=#{cid}
+		where mid=#{mid}
+	</update>
 </mapper>

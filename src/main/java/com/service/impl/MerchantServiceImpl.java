@@ -14,11 +14,11 @@ public class MerchantServiceImpl implements MerchantService {
 
 	@Autowired
 	private MerchantDao merchantDao;
-	
+
 	public void setMerchantDao(MerchantDao merchantDao) {
-		this .merchantDao=merchantDao;
+		this.merchantDao = merchantDao;
 	}
-	
+
 	@Override
 	public int addMerchant(Merchant merchant) {
 		// TODO Auto-generated method stub

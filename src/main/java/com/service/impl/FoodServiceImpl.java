@@ -10,12 +10,11 @@ import com.model.Food;
 import com.service.FoodService;
 
 @Service
-public class FoodServiceImpl implements FoodService{
+public class FoodServiceImpl implements FoodService {
 
 	@Autowired
 	private FoodDao foodDao;
-	
-	
+
 	public void setFooddao(FoodDao foodDao) {
 		this.foodDao = foodDao;
 	}
