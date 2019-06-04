@@ -25,9 +25,9 @@ public class FoodServiceImpl implements FoodService{
 	}
 
 	@Override
-	public int delFood(int foodid) {
+	public int delFood(int foodId) {
 		// TODO Auto-generated method stub
-		return fooddao.delFood(foodid);
+		return fooddao.delFood(foodId);
 	}
 
 	@Override
@@ -37,9 +37,9 @@ public class FoodServiceImpl implements FoodService{
 	}
 
 	@Override
-	public Food getFoodByFoodid(int foodid) {
+	public Food getFoodByFoodId(int foodId) {
 		// TODO Auto-generated method stub
-		return fooddao.getFoodByFoodid(foodid);
+		return fooddao.getFoodByFoodId(foodId);
 	}
 
 	@Override

@@ -27,7 +27,7 @@ public class ItemTest {
 	}
 	@Test
 	public void getItemByorderId(){
-		List<Item> item = itemDao.getItemByorderId("1");
+		List<Item> item = itemDao.getItemByOrderId("1");
 		System.out.println(item);
 	}
 }

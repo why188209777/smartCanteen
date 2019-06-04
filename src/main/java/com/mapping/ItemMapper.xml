@@ -5,7 +5,7 @@
 	<insert id="addItem" parameterType="Item">
 	insert into item(orderid,foodid,fname,price,number) values(#{orderid},#{foodid},#{fname},#{price},#{number});
 	</insert>
-  <select id="getItemByorderId" resultType="Item">
+  <select id="getItemByOrderId" resultType="Item">
   select * from item where orderid=#{orderid}
   </select>
 </mapper>

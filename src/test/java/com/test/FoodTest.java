@@ -20,7 +20,7 @@ public class FoodTest {
 	
 	@Test
 	public void getfoodbyid(){
-		Food food = foodDao.getFoodByFoodid(1);
+		Food food = foodDao.getFoodByFoodId(1);
 		System.out.print(food);
 	} 
 	

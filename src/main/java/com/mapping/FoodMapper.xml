@@ -14,7 +14,7 @@
     	update food set fname=#{fname},price=#{price},image=#{image},number=#{number},mid=#{mid} where foodid=#{foodid}
     </update>
     <!-- 根据id查询 -->
-    <select id="getFoodByFoodid" resultType="Food">
+    <select id="getFoodByFoodId" resultType="Food">
     	select * from food where foodid=#{foodid}
     </select>
     <!-- 查询所有 -->
