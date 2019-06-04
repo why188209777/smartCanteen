@@ -29,6 +29,4 @@ public class ItemServiceImpl implements ItemService {
 		// TODO Auto-generated method stub
 		return itemDao.getItemByOrderId(orderId);
 	}
-
-	
 }

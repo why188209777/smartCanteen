@@ -10,7 +10,7 @@
 <head>
 <base href="<%=basePath%>">
 
-<title>My JSP 'adminLogin.jsp' starting page</title>
+<title>My JSP 'addCantee.jsp' starting page</title>
 
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="cache-control" content="no-cache">
@@ -22,12 +22,12 @@
 	-->
 
 </head>
-
 <body>
-	<form action="canteen/login.do">
-		用户名：<input type="text" name="aname"><br />
-		密码：<input type="password" name="password"><br />
-		<input type="submit" value="登录">
+	<form action="canteen/addCanteen.do">
+		店名<input type="text" name="cname"><br /> 好吃程度<input
+			type="text" name="description"><br /> <input type="submit"
+			value="增加">
 	</form>
 </body>
+
 </html>
