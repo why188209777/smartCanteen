@@ -1,26 +1,33 @@
 package com.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.model.Admin;
-import com.service.AdminService;
-import com.service.impl.AdminServiceImpl;
+
+import com.dao.ItemDao;
+
+import com.model.Item;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-mybatis.xml")
-public class AdminTest {
-
+public class ItemTest {
 	@Autowired
-	private AdminService adminService;
+	private ItemDao itemDao;
 	
 	@Test
-	public void login(){
-		Admin admin = adminService.login("马云", "123456");
-		System.out.println(admin);
+	public void addItem(){
+		Item item=new Item("1",2,"茶叶蛋",15.0,3);
+		int addItem = itemDao.addItem(item);
+		System.out.println(addItem);
 	}
-	
+	@Test
+	public void getItemByorderId(){
+		List<Item> item = itemDao.getItemByorderId("1");
+		System.out.println(item);
+	}
 }
