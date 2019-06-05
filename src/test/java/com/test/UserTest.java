@@ -52,14 +52,14 @@ public class UserTest {
 
 	@Test
 	public void loginTest() {
-		int id;
+		String sname;
 		String password;
 		Scanner scanner = new Scanner(System.in);
 		System.out.println("请输入id");
-		id = scanner.nextInt();
+		sname = scanner.next();
 		System.out.println("请输入密码");
 		password = scanner.next();
-		User user = userDao.login(id, password);
+		User user = userDao.login(sname, password);
 		System.out.println(user);
 	}
 

@@ -6,7 +6,12 @@ import com.model.Merchant;
 
 public interface MerchantDao {
 	public int addMerchant(Merchant merchant);
+
 	public int delMerchant(int mid);
+
 	public int updateMerchant(Merchant merchant);
-	List<Merchant>getMerchantsByCid(int cid);
+
+	public Merchant getMerchantByMid(int mid);
+	
+	public List<Merchant> getMerchantsByCid(int cid);
 }

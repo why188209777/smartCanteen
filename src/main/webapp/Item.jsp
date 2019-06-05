@@ -1,4 +1,5 @@
-<%@ page language="java" import="java.util.*" pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,7 +10,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>My JSP 'error.jsp' starting page</title>
+    <title>My JSP 'Item.jsp' starting page</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -23,6 +24,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
-    Error<br>
+<form action="Item/add.do">
+		商品编号：<input type="text" name="itemid"><br />
+		商家编号：<input type="text" name="orderid"><br />
+		食物编号:<input type="text" name="foodid"> <br />
+		食物名称:<input type="text" name="fname"><br />
+		价格:<input type="text" name="price"><br />
+		数量:<input type="text" name="number"><br /> 
+		<input type="submit" value="添加">
+	</form>
   </body>
 </html>

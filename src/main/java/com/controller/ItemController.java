@@ -7,8 +7,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.model.Item;
-import com.mysql.cj.xdevapi.Result;
-import com.service.FoodService;
 import com.service.ItemService;
 
 @Controller

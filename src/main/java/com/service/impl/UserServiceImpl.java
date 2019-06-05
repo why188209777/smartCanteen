@@ -43,10 +43,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User login(int id, String password) {
-		// TODO Auto-generated method stub
-		return null;
+	public User login(String uname, String password) {
+		return userDao.login(uname, password);
 	}
-
 
 }

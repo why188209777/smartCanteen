@@ -3,26 +3,30 @@
 <mapper namespace="com.dao.FoodDao">
 	<!-- 添加 -->
 	<insert id="addFood" parameterType="Food">
-		insert into food (fname,price,image,number,mid) VALUES (#{fname},#{price},#{image},#{number},#{mid})
+		insert into food
+		(fname,price,image,number,mid) VALUES
+		(#{fname},#{price},#{image},#{number},#{mid})
 	</insert>
-	<!-- 删除-->
+	<!-- 删除 -->
 	<delete id="delFood">
-    	delete from food where foodid=#{foodid}
-    </delete>
-    <!-- 更新 -->
-    <update id="updateFood" parameterType="Food" >
-    	update food set fname=#{fname},price=#{price},image=#{image},number=#{number},mid=#{mid} where foodid=#{foodid}
-    </update>
-    <!-- 根据id查询 -->
-    <select id="getFoodByFoodId" resultType="Food">
-    	select * from food where foodid=#{foodid}
-    </select>
-    <!-- 查询所有 -->
-    <select id="getAllFood" resultType="Food">
-    	select * from food
-    </select>
-    <!-- 根据mid查询 -->
-    <select id="getFoodByMid" resultType="Food">
-    	select * from food where mid=#{mid}
-    </select>
+		delete from food where foodid=#{foodid}
+	</delete>
+	<!-- 更新 -->
+	<update id="updateFood" parameterType="Food">
+		update food set
+		fname=#{fname},price=#{price},image=#{image},number=#{number},mid=#{mid}
+		where foodid=#{foodid}
+	</update>
+	<!-- 根据id查询 -->
+	<select id="getFoodByFoodId" resultType="Food">
+		select * from food where foodid=#{foodid}
+	</select>
+	<!-- 查询所有 -->
+	<select id="getAllFood" resultType="Food">
+		select * from food
+	</select>
+	<!-- 根据mid查询 -->
+	<select id="getFoodByMid" resultType="Food">
+		select * from food where mid=#{mid}
+	</select>
 </mapper>

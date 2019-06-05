@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.UserDao">
-	<insert id="addUser" parameterType="User"><!--插入用户  -->
+	<insert id="addUser" parameterType="User"><!--插入用户 -->
 		insert into
 		user(uname,idcard,studentid,class,password,phonenum,address)
 		values(#{uname},#{idcard},#{studentid},#{classes},#{password},#{phonenum},#{address})
 	</insert>
 
-	<delete id="delUser" parameterType="String"><!--删除用户  -->
+	<delete id="delUser" parameterType="String"><!--删除用户 -->
 		delete from user where
 		studentid=#{studentid}
 	</delete>
 
-	<update id="updateUser" parameterType="User"><!--更新用户  -->
+	<update id="updateUser" parameterType="User"><!--更新用户 -->
 		update user set
 		uname=#{uname},class=#{classes},password=#{password},phonenum=#{phonenum},address=#{address}
 		where studentid=#{studentid}
 	</update>
 
-	<select id="getUserByStudentId" parameterType="String" 
-		resultType="User"><!--按学号查找用户  -->
+	<select id="getUserByStudentId" parameterType="String"
+		resultType="User"><!--按学号查找用户 -->
 		select * from user where studentid=#{studentid}
 	</select>
 
-	<select id="getAllUser" resultType="User"><!--得到所有用户  -->
+	<select id="getAllUser" resultType="User"><!--得到所有用户 -->
 		select * from user;
 	</select>
-	
-	<select id="login" resultType="User"><!--用户登录  -->
-	select * from user where id=#{id} and password=#{password}
+
+	<select id="login" resultType="User"><!--用户登录 -->
+		select * from user where id=#{id} and password=#{password}
 	</select>
 </mapper>

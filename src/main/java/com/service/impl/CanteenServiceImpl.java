@@ -3,10 +3,10 @@ package com.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.dao.AdminDao;
 import com.dao.CanteenDao;
 import com.model.Canteen;
 import com.service.CanteenService;
+
 @Service
 public class CanteenServiceImpl implements CanteenService {
 

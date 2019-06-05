@@ -7,9 +7,10 @@ public class Food {
 	private String image;
 	private int number;
 	private int mid;
-	
-	public Food(){};
-	
+
+	public Food() {
+	}
+
 	public Food(int foodid, String fname, double price, String image, int number, int mid) {
 		super();
 		this.foodid = foodid;
