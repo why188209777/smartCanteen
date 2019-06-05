@@ -18,29 +18,38 @@ public class MerchantController {
 
 	@RequestMapping(value = "addMerchant")
 	@ResponseBody
-	public int addMerchant(String mname, String description, int cid) {
+	public boolean addMerchant(String mname, String description, int cid) {
 		Merchant merchant = new Merchant(mname, description, cid);
 		int addmerchant = merchantService.addMerchant(merchant);
-		return addmerchant;
+		return addmerchant == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "delMerchant")
-	public String delMerchant(int mid) {
+	@ResponseBody
+	public boolean delMerchant(int mid) {
 		int delMerchant = merchantService.delMerchant(mid);
-		return delMerchant == 0 ? "error" : "success";
+		return delMerchant == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "updateMerchant")
-	public String updateMerchant(int mid) {
+	@ResponseBody
+	public boolean updateMerchant(int mid) {
 		Merchant merchant = new Merchant(mid);
 		int updateMerchant = merchantService.updateMerchant(merchant);
-		return updateMerchant == 0 ? "error" : "success";
+		return updateMerchant == 0 ? false : true;
+	}
+
+	@RequestMapping(value = "getMerchantByMid")
+	@ResponseBody
+	public Merchant getMerchantByMid(int mid) {
+		Merchant merchant = merchantService.getMerchantByMid(mid);
+		return merchant;
 	}
 
 	@RequestMapping(value = "getMerchantsByCid")
-	public String getMerchantsByCid(int cid) {
-
-		List<Merchant> merchant = merchantService.getMerchantsByCid(cid);
-		return merchant == null ? "error" : "success";
+	@ResponseBody
+	public List<Merchant> getMerchantsByCid(int cid) {
+		List<Merchant> list = merchantService.getMerchantsByCid(cid);
+		return list;
 	}
 }

@@ -17,6 +17,7 @@ public class FoodController {
 	private FoodService foodService;
 
 	@RequestMapping(value = "addFood")
+	@ResponseBody
 	public String addFood(String fname, double price, String image, int number, int mid) {
 		Food food = new Food(fname, price, image, number, mid);
 		int addFood = foodService.addFood(food);
@@ -24,12 +25,14 @@ public class FoodController {
 	}
 
 	@RequestMapping(value = "delFood")
+	@ResponseBody
 	public String delFood(int foodId) {
 		int delFood = foodService.delFood(foodId);
 		return delFood == 0 ? "error" : "success";
 	}
 
 	@RequestMapping(value = "updateFood")
+	@ResponseBody
 	public String updateFood(int foodid, String fname, double price, String image, int number, int mid) {
 		Food food = new Food(foodid, fname, price, image, number, mid);
 		int ueFood = foodService.updateFood(food);
@@ -37,6 +40,7 @@ public class FoodController {
 	}
 
 	@RequestMapping(value = "getFoodByFoodId")
+	@ResponseBody
 	public String getFoodByFoodId(int foodId) {
 		Food food = foodService.getFoodByFoodId(foodId);
 		return food == null ? "error" : "success";
@@ -50,8 +54,9 @@ public class FoodController {
 	}
 
 	@RequestMapping(value = "getFoodByMid")
-	public String getFoodByMid(int mid) {
+	@ResponseBody
+	public List<Food> getFoodByMid(int mid) {
 		List<Food> list = foodService.getFoodByMid(mid);
-		return list == null ? "error" : "success";
+		return list;
 	}
 }

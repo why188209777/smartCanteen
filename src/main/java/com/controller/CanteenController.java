@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Canteen;
 import com.service.CanteenService;
@@ -15,25 +16,25 @@ public class CanteenController {
 	private CanteenService canteenService;
 
 	@RequestMapping(value = "addCanteen")
-	public String addCanteen(String cname, String description, ModelMap map) {
-		map.addAttribute("cname", cname);
-		map.addAttribute("description", description);
+	@ResponseBody
+	public boolean addCanteen(String cname, String description) {
 		Canteen canteen = new Canteen(cname, description);
-		System.out.println(canteen);
 		int addcanteen = canteenService.addCanteen(canteen);
-		return addcanteen == 0 ? "error" : "success";
+		return addcanteen == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "updateCanteen")
-	public String updateCanteen(int cid, String cname, String description) {
+	@ResponseBody
+	public boolean updateCanteen(int cid, String cname, String description) {
 		Canteen canteen = new Canteen(cid, cname, description);
 		int updateCanteen = canteenService.updateCanteen(canteen);
-		return updateCanteen == 0 ? "error" : "success";
+		return updateCanteen == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "getCanteenByCid")
-	public String getCanteenByCid(int cid) {
-		Canteen canteenByCid = canteenService.getCanteenByCid(cid);
-		return canteenByCid == null ? "error" : "success";
+	@ResponseBody
+	public Canteen getCanteenByCid(int cid) {
+		Canteen canteen = canteenService.getCanteenByCid(cid);
+		return canteen;
 	}
 }
