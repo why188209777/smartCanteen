@@ -38,6 +38,12 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
+	public List<Merchant> getAllMerchant() {
+		// TODO Auto-generated method stub
+		return merchantDao.getAllMerchant();
+	}
+
+	@Override
 	public Merchant getMerchantByMid(int mid) {
 		// TODO Auto-generated method stub
 		return merchantDao.getMerchantByMid(mid);

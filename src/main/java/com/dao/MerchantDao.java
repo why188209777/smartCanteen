@@ -11,7 +11,9 @@ public interface MerchantDao {
 
 	public int updateMerchant(Merchant merchant);
 
+	public List<Merchant> getAllMerchant();
+
 	public Merchant getMerchantByMid(int mid);
-	
+
 	public List<Merchant> getMerchantsByCid(int cid);
 }

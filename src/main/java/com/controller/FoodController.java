@@ -33,8 +33,8 @@ public class FoodController {
 
 	@RequestMapping(value = "updateFood")
 	@ResponseBody
-	public String updateFood(int foodid, String fname, double price, String image, int number, int mid) {
-		Food food = new Food(foodid, fname, price, image, number, mid);
+	public String updateFood(int foodId, String fname, double price, String image, int number, int mid) {
+		Food food = new Food(foodId, fname, price, image, number, mid);
 		int ueFood = foodService.updateFood(food);
 		return ueFood == 0 ? "error" : "success";
 	}
