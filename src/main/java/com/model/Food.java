@@ -28,46 +28,59 @@ public class Food {
 		this.number = number;
 		this.mid = mid;
 	}
+
 	public int getFoodid() {
 		return foodid;
 	}
+
 	public void setFoodid(int foodid) {
 		this.foodid = foodid;
 	}
+
 	public String getFname() {
 		return fname;
 	}
+
 	public void setFname(String fname) {
 		this.fname = fname;
 	}
+
 	public double getPrice() {
 		return price;
 	}
+
 	public void setPrice(double price) {
 		this.price = price;
 	}
+
 	public String getImage() {
 		return image;
 	}
+
 	public void setImage(String image) {
 		this.image = image;
 	}
+
 	public int getNumber() {
 		return number;
 	}
+
 	public void setNumber(int number) {
 		this.number = number;
 	}
+
 	public int getMid() {
 		return mid;
 	}
+
 	public void setMid(int mid) {
 		this.mid = mid;
 	}
+
 	@Override
 	public String toString() {
 		return "Food [foodid=" + foodid + ", fname=" + fname + ", price=" + price + ", image=" + image + ", number="
 				+ number + ", mid=" + mid + "]";
 	}
-	
+
 }
