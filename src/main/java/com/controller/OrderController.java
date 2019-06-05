@@ -17,28 +17,31 @@ public class OrderController {
 	private OrderService orderService;
 
 	@RequestMapping(value = "addOrder")
-	public String addOrder(String orderid, String createtime, String remark, int status, double total, int userid) {
+	@ResponseBody
+	public boolean addOrder(String orderid, String createtime, String remark, int status, double total, int userid) {
 		Order order = new Order(orderid, createtime, remark, status, total, userid);
 		int addOrder = orderService.addOrder(order);
-		return addOrder == 0 ? "error" : "success";
+		return addOrder == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "getOrderByOrderId")
-	public String getOrderByOrderId(String orderid) {
+	@ResponseBody
+	public Order getOrderByOrderId(String orderid) {
 		Order order = orderService.getOrderByOrderId(orderid);
-		return order == null ? "error" : "success";
+		return order;
 	}
 
 	@RequestMapping(value = "getAllOrder")
 	@ResponseBody
 	public List<Order> getAllOrder() {
-		List<Order> order = orderService.getAllOrder();
-		return order;
+		List<Order> list = orderService.getAllOrder();
+		return list;
 	}
 
 	@RequestMapping(value = "getOrderByUserId")
-	public String getOrderByUserId(int userId) {
-		List<Order> order = orderService.getOrderByUserId(userId);
-		return order == null ? "error" : "success";
+	@ResponseBody
+	public List<Order> getOrderByUserId(int userId) {
+		List<Order> list = orderService.getOrderByUserId(userId);
+		return list;
 	}
 }

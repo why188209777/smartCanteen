@@ -18,12 +18,8 @@ public class AdminController {
 
 	@RequestMapping(value = "login")
 	@ResponseBody
-	public Admin login(String aname, String password, ModelMap map) {
-		System.out.println(aname + " " + password);
-		map.addAttribute("aname", aname);
+	public Admin login(String aname, String password) {
 		Admin admin = adminService.login(aname, password);
-		//return admin == null ? "error" : "redirect:merchantIndex.html";
-		System.out.println(admin);
 		return admin;
 	}
 }
