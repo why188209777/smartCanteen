@@ -40,5 +40,9 @@ public class MerchantTest {
 		int updateMerchant = merchantDao.updateMerchant(merchant);
 		System.out.println(updateMerchant);
 	}
-	
+	@Test
+	public void getMerchantByMid(){
+		Merchant merchant = merchantDao.getMerchantByMid(1);
+		System.out.println(merchant);
+	}
 }

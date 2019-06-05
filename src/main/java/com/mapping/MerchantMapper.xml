@@ -6,9 +6,6 @@
 		insert into merchant(mname,description,cid)
 		values(#{mname},#{description},#{cid});
 	</insert>
-	<select id="getMerchantsByCid" resultType="Merchant">
-		select * from merchant where cid=#{cid}
-	</select>
 	<delete id="delMerchant" parameterType="Merchant">
 		delete from merchant where mid=#{mid}
 	</delete>
@@ -16,4 +13,10 @@
 		update merchant set mname=#{mname} ,description=#{description},cid=#{cid}
 		where mid=#{mid}
 	</update>
+	<select id="getMerchantByMid" resultType="Merchant">
+		select * from merchant where mid=#{mid}
+	</select>
+	<select id="getMerchantsByCid" resultType="Merchant">
+		select * from merchant where cid=#{cid}
+	</select>
 </mapper>

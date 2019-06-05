@@ -11,5 +11,7 @@ public interface MerchantService {
 
 	public int updateMerchant(Merchant merchant);
 
-	List<Merchant> getMerchantsByCid(int cid);
+	public Merchant getMerchantByMid(int mid);
+	
+	public List<Merchant> getMerchantsByCid(int cid);
 }
