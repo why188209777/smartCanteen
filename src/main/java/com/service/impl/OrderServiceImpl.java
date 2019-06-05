@@ -3,43 +3,44 @@ package com.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.dao.OrderDao;
 import com.model.Order;
 import com.service.OrderService;
 
-public class OrderServiceImpl implements OrderService{
-	
+@Service
+public class OrderServiceImpl implements OrderService {
+
 	@Autowired
-	private OrderDao orderdao;
-	
-	
-	public void setOrderdao(OrderDao orderdao) {
-		this.orderdao = orderdao;
+	private OrderDao orderDao;
+
+	public void setOrderdao(OrderDao orderDao) {
+		this.orderDao = orderDao;
 	}
 
 	@Override
 	public int addOrder(Order order) {
 		// TODO Auto-generated method stub
-		return orderdao.addOrder(order);
+		return orderDao.addOrder(order);
 	}
 
 	@Override
-	public Order getOrderByOrderId(String orderid) {
+	public Order getOrderByOrderId(String orderId) {
 		// TODO Auto-generated method stub
-		return orderdao.getOrderByOrderId(orderid);
+		return orderDao.getOrderByOrderId(orderId);
 	}
 
 	@Override
 	public List<Order> getAllOrder() {
 		// TODO Auto-generated method stub
-		return orderdao.getAllOrder();
+		return orderDao.getAllOrder();
 	}
 
 	@Override
-	public List<Order> getOrderByUserId(int userid) {
+	public List<Order> getOrderByUserId(int userId) {
 		// TODO Auto-generated method stub
-		return orderdao.getOrderByUserId(userid);
+		return orderDao.getOrderByUserId(userId);
 	}
 
 }

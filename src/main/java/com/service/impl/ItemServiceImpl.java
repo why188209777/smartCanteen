@@ -3,18 +3,18 @@ package com.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import com.dao.AdminDao;
 import com.dao.ItemDao;
-import com.model.Admin;
 import com.model.Item;
 import com.service.ItemService;
 
+@Service
 public class ItemServiceImpl implements ItemService {
 	@Autowired
 	private ItemDao itemDao;
 
-	public void setAdminDao(AdminDao adminDao) {
+	public void setAdminDao(ItemDao itemDao) {
 		this.itemDao = itemDao;
 	}
 
@@ -25,10 +25,8 @@ public class ItemServiceImpl implements ItemService {
 	}
 
 	@Override
-	public List<Item> getItemByorderId(String orderId) {
+	public List<Item> getItemByOrderId(String orderId) {
 		// TODO Auto-generated method stub
-		return itemDao.getItemByorderId(orderId);
+		return itemDao.getItemByOrderId(orderId);
 	}
-
-	
 }
