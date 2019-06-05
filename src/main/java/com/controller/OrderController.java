@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Order;
 import com.service.OrderService;
@@ -29,12 +30,13 @@ public class OrderController {
 	}
 
 	@RequestMapping(value = "getAllOrder")
-	public String getAllOrder() {
+	@ResponseBody
+	public List<Order> getAllOrder() {
 		List<Order> order = orderService.getAllOrder();
-		return order == null ? "error" : "success";
+		return order;
 	}
 
-	@RequestMapping(value = "getAllOrder")
+	@RequestMapping(value = "getOrderByUserId")
 	public String getOrderByUserId(int userId) {
 		List<Order> order = orderService.getOrderByUserId(userId);
 		return order == null ? "error" : "success";

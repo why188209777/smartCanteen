@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Merchant;
 import com.service.MerchantService;
@@ -16,10 +17,11 @@ public class MerchantController {
 	private MerchantService merchantService;
 
 	@RequestMapping(value = "addMerchant")
-	public String addMerchant(String mname, String description, int cid) {
+	@ResponseBody
+	public int addMerchant(String mname, String description, int cid) {
 		Merchant merchant = new Merchant(mname, description, cid);
 		int addmerchant = merchantService.addMerchant(merchant);
-		return addmerchant == 0 ? "error" : "success";
+		return addmerchant;
 	}
 
 	@RequestMapping(value = "delMerchant")
