@@ -8,8 +8,9 @@ public class Order {
 	private int status;
 	private double total;
 	private int userid;
-
-	public Order(String orderid, String createtime, String remark, int status, double total, int userid) {
+	private int mid;
+	
+	public Order(String orderid, String createtime, String remark, int status, double total, int userid, int mid) {
 		super();
 		this.orderid = orderid;
 		this.createtime = createtime;
@@ -17,7 +18,30 @@ public class Order {
 		this.status = status;
 		this.total = total;
 		this.userid = userid;
+		this.mid = mid;
 	}
+
+	public Order(int id, String orderid, String createtime, String remark, int status, double total, int userid,
+			int mid) {
+		super();
+		this.id = id;
+		this.orderid = orderid;
+		this.createtime = createtime;
+		this.remark = remark;
+		this.status = status;
+		this.total = total;
+		this.userid = userid;
+		this.mid = mid;
+	}
+
+	public int getMid() {
+		return mid;
+	}
+
+	public void setMid(int mid) {
+		this.mid = mid;
+	}
+
 
 	public Order() {
 		super();
@@ -82,7 +106,7 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [id=" + id + ", orderid=" + orderid + ", createtime=" + createtime + ", remark=" + remark
-				+ ", status=" + status + ", total=" + total + ", userid=" + userid + "]";
+				+ ", status=" + status + ", total=" + total + ", userid=" + userid + ", mid=" + mid + "]";
 	}
 
 }

@@ -4,8 +4,8 @@
 	<!-- 添加 -->
 	<insert id="addOrder" parameterType="Order">
 		insert into orders
-		(orderid,createtime,remark,status,total,userid) VALUES
-		(#{orderid},#{createtime},#{remark},#{status},#{total},#{userid})
+		(orderid,createtime,remark,status,total,userid,mid) VALUES
+		(#{orderid},#{createtime},#{remark},#{status},#{total},#{userid},#{mid})
 	</insert>
 	<!-- 根据id查询 -->
 	<select id="getOrderByOrderId" resultType="Order">
@@ -18,5 +18,9 @@
 	<!-- 根据userid查询 -->
 	<select id="getOrderByUserId" resultType="Order">
 		select * from orders where userid=#{userid}
+	</select>
+	<!-- 根据mid查询 -->
+	<select id="getOrderByMid" resultType="Order">
+		select * from orders where mid=#{mid}
 	</select>
 </mapper>
