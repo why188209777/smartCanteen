@@ -1,8 +1,11 @@
 package com.controller;
 
+
+
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,5 +39,11 @@ public class CanteenController {
 	public Canteen getCanteenByCid(int cid) {
 		Canteen canteen = canteenService.getCanteenByCid(cid);
 		return canteen;
+	}
+	@RequestMapping(value = "getAllCanteen")
+	@ResponseBody
+	public List<Canteen> getAllCanteen(){
+		List<Canteen> list = canteenService.getAllCanteen();
+		return list;
 	}
 }

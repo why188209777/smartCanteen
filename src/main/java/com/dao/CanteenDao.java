@@ -1,6 +1,9 @@
 package com.dao;
 
+import java.util.List;
+
 import com.model.Canteen;
+import com.model.Food;
 
 public interface CanteenDao {
 
@@ -9,4 +12,5 @@ public interface CanteenDao {
 	public int updateCanteen(Canteen canteen);
 
 	public Canteen getCanteenByCid(int cid);
+	List<Canteen> getAllCanteen();
 }

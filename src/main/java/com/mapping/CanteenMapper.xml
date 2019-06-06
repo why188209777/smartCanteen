@@ -14,4 +14,7 @@
 		SELECT *FROM canteen
 		WHERE cid=#{cid}
 	</select>
+	<select id="getAllCanteen" resultType="Canteen">
+	select * from canteen
+	</select>
 </mapper>
