@@ -1,5 +1,7 @@
 package com.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -33,6 +35,12 @@ public class CanteenServiceImpl implements CanteenService {
 	public Canteen getCanteenByCid(int cid) {
 		// TODO Auto-generated method stub
 		return canteenDao.getCanteenByCid(cid);
+	}
+
+	@Override
+	public List<Canteen> getAllCanteen() {
+		// TODO Auto-generated method stub
+		return canteenDao.getAllCanteen();
 	}
 
 }

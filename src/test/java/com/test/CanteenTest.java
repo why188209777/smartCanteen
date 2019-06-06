@@ -1,5 +1,7 @@
 package com.test;
 
+import java.util.List;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,4 +36,11 @@ public class CanteenTest {
 		Canteen canteenByCid = canteenDao.getCanteenByCid(1);
 		System.out.println("Canteen:" + canteenByCid);
 	}
+
+   @Test
+   
+   public void  getAllCanteen(){
+	   List<Canteen> list = canteenDao.getAllCanteen();
+	   System.out.println(list);
+   }
 }
