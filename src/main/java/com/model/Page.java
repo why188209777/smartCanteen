@@ -6,7 +6,14 @@ public class Page {
 	private int pageSize;
 	private int first;
 	
+	
+	
+	public Page() {
+		super();
+	}
+
 	public Page(int pageIndex, int pageSize) {
+		first = (pageIndex - 1) * pageSize;
 		this.pageIndex = pageIndex;
 		this.pageSize = pageSize;
 	}
