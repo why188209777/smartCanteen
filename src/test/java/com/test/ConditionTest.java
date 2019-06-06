@@ -1,7 +1,5 @@
 package com.test;
 
-import static org.hamcrest.CoreMatchers.nullValue;
-
 import java.util.List;
 
 import org.junit.Test;
@@ -24,7 +22,7 @@ public class ConditionTest {
 	@Test
 	public void getUserByCondition(){
 		UserCondition condition = new UserCondition(
-			null,null,null,null,null,"2",1,3
+			null,null,null,null,null,null,1,3
 		);
 		List<User> list = userDao.getUserByCondition(condition);
 		System.out.println(list);
