@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.dao.UserDao;
 import com.model.User;
-import com.model.UserCondition;
 import com.service.UserService;
 
 @Service
@@ -48,10 +47,6 @@ public class UserServiceImpl implements UserService {
 		return userDao.login(uname, password);
 	}
 
-	@Override
-	public List<User> getUserByCondition(UserCondition condition) {
-		// TODO Auto-generated method stub
-		return userDao.getUserByCondition(condition);
-	}
+	
 
 }
