@@ -30,8 +30,9 @@
 	<select id="login" resultType="User"><!--用户登录 -->
 		select * from user where id=#{id} and password=#{password}
 	</select>
-	
-	<select id="getUserByCondition" parameterType="UserCondition" resultType="User">
+
+	<select id="getUserByCondition" parameterType="UserCondition"
+		resultType="User">
 		select * from user
 		<where>
 			1 = 1

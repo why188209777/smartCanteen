@@ -24,8 +24,8 @@ public class MerchantTest {
 		System.out.println(addMerchant);
 	}
 	@Test
-	public void getMerchantsByCid(){
-		List<Merchant> merchant = merchantDao.getMerchantsByCid(1);
+	public void getMerchantByCid(){
+		List<Merchant> merchant = merchantDao.getMerchantByCid(1);
 		System.out.println(merchant);
 	}
 	@Test

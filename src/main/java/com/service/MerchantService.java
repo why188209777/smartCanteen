@@ -3,6 +3,7 @@ package com.service;
 import java.util.List;
 
 import com.model.Merchant;
+import com.model.MerchantCondition;
 
 public interface MerchantService {
 	public int addMerchant(Merchant merchant);
@@ -15,5 +16,7 @@ public interface MerchantService {
 
 	public Merchant getMerchantByMid(int mid);
 	
-	public List<Merchant> getMerchantsByCid(int cid);
+	public List<Merchant> getMerchantByCid(int cid);
+	
+	public List<Merchant> getMerchantByCondition(MerchantCondition condition);
 }

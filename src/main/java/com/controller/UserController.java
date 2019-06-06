@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.User;
+import com.model.UserCondition;
 import com.service.UserService;
 
 @Controller
@@ -60,5 +61,13 @@ public class UserController {
 	public User login(String uname, String password) {
 		User user = userService.login(uname, password);
 		return user;
+	}
+	
+	@RequestMapping(value = "page")
+	@ResponseBody
+	public List<User> getUserByCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address, int pageIndex, int pageSize){
+		UserCondition condition = new UserCondition(uname, idcard, studentid, classes, phonenum, address, pageIndex, pageSize);
+		List<User> list = userService.getUserByCondition(condition);
+		return list;
 	}
 }

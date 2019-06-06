@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Food;
+import com.model.FoodCondition;
 import com.service.FoodService;
 
 @Controller
@@ -18,32 +19,32 @@ public class FoodController {
 
 	@RequestMapping(value = "addFood")
 	@ResponseBody
-	public String addFood(String fname, double price, String image, int number, int mid) {
+	public boolean addFood(String fname, double price, String image, int number, int mid) {
 		Food food = new Food(fname, price, image, number, mid);
 		int addFood = foodService.addFood(food);
-		return addFood == 0 ? "error" : "success";
+		return addFood == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "delFood")
 	@ResponseBody
-	public String delFood(int foodId) {
+	public boolean delFood(int foodId) {
 		int delFood = foodService.delFood(foodId);
-		return delFood == 0 ? "error" : "success";
+		return delFood == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "updateFood")
 	@ResponseBody
-	public String updateFood(int foodId, String fname, double price, String image, int number, int mid) {
+	public boolean updateFood(int foodId, String fname, double price, String image, int number, int mid) {
 		Food food = new Food(foodId, fname, price, image, number, mid);
 		int ueFood = foodService.updateFood(food);
-		return ueFood == 0 ? "error" : "success";
+		return ueFood == 0 ? false : true;
 	}
 
 	@RequestMapping(value = "getFoodByFoodId")
 	@ResponseBody
-	public String getFoodByFoodId(int foodId) {
+	public Food getFoodByFoodId(int foodId) {
 		Food food = foodService.getFoodByFoodId(foodId);
-		return food == null ? "error" : "success";
+		return food;
 	}
 
 	@RequestMapping(value = "getAllFood")
@@ -57,6 +58,14 @@ public class FoodController {
 	@ResponseBody
 	public List<Food> getFoodByMid(int mid) {
 		List<Food> list = foodService.getFoodByMid(mid);
+		return list;
+	}
+	
+	@RequestMapping(value = "getFoodByCondition")
+	@ResponseBody
+	public List<Food> getFoodByCondition(String fname, int mid, int pageIndex, int pageSize) {
+		FoodCondition condition = new FoodCondition(fname, mid, pageIndex, pageSize);
+		List<Food> list = foodService.getFoodByCondition(condition);
 		return list;
 	}
 }

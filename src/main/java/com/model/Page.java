@@ -10,6 +10,7 @@ public class Page {
 		super();
 	}
 
+	/*可以通过构造器方式*/
 	public Page(int pageIndex, int pageSize) {
 		first = (pageIndex - 1) * pageSize;
 		this.pageIndex = pageIndex;
@@ -20,6 +21,7 @@ public class Page {
 		return pageIndex;
 	}
 
+	/*也可以通过set方式*/
 	public void setPageIndex(int pageIndex) {
 		first = (pageIndex - 1) * pageSize;
 		this.pageIndex = pageIndex;

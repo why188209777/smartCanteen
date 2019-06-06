@@ -3,6 +3,7 @@ package com.service;
 import java.util.List;
 
 import com.model.Food;
+import com.model.FoodCondition;
 
 public interface FoodService {
 	public int addFood(Food food);
@@ -16,4 +17,6 @@ public interface FoodService {
 	List<Food> getAllFood();
 
 	List<Food> getFoodByMid(int mid);
+
+	public List<Food> getFoodByCondition(FoodCondition condition);
 }

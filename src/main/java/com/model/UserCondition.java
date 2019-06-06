@@ -16,7 +16,7 @@ public class UserCondition extends Page {
 	public UserCondition() {
 	}
 
-	public UserCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address,int pageIndex, int pageSize) {
+	public UserCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address, int pageIndex, int pageSize) {
 		super(pageIndex, pageSize);
 		this.uname = uname;
 		this.idcard = idcard;

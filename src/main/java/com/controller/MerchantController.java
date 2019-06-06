@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Merchant;
+import com.model.MerchantCondition;
 import com.service.MerchantService;
 
 @Controller
@@ -53,10 +54,18 @@ public class MerchantController {
 		return merchant;
 	}
 
-	@RequestMapping(value = "getMerchantsByCid")
+	@RequestMapping(value = "getMerchantByCid")
 	@ResponseBody
-	public List<Merchant> getMerchantsByCid(int cid) {
-		List<Merchant> list = merchantService.getMerchantsByCid(cid);
+	public List<Merchant> getMerchantByCid(int cid) {
+		List<Merchant> list = merchantService.getMerchantByCid(cid);
+		return list;
+	}
+	
+	@RequestMapping(value = "getMerchantByCondition")
+	@ResponseBody
+	public List<Merchant> getMerchantByCondition(String mname, int cid, int pageIndex, int pageSize) {
+		MerchantCondition condition = new MerchantCondition(mname, cid, pageIndex, pageSize);
+		List<Merchant> list = merchantService.getMerchantByCondition(condition);
 		return list;
 	}
 }
