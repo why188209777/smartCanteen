@@ -5,9 +5,7 @@ public class Page {
 	private int pageIndex;
 	private int pageSize;
 	private int first;
-	
-	
-	
+
 	public Page() {
 		super();
 	}
@@ -47,5 +45,5 @@ public class Page {
 	public String toString() {
 		return "Page [pageIndex=" + pageIndex + ", pageSize=" + pageSize + ", first=" + first + "]";
 	}
-	
+
 }
