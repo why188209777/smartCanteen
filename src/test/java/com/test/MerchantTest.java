@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dao.MerchantDao;
-import com.model.Item;
 import com.model.Merchant;
 
 @RunWith(SpringJUnit4ClassRunner.class)
