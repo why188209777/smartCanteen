@@ -30,4 +30,32 @@
 	<select id="login" resultType="User"><!--用户登录 -->
 		select * from user where id=#{id} and password=#{password}
 	</select>
+	
+	<select id="getUserByCondition" parameterType="UserCondition" resultType="User">
+		select * from user
+		<where>
+			1 = 1
+			<if test="uname!=null">
+				and uname like '%${uname}%'
+			</if>
+			<if test="idcard!=null">
+				and idcard like '%${idcard}%'
+			</if>
+			<if test="studentid!=null">
+				and studentid like '%${studentid}%'
+			</if>
+			<if test="classes!=null">
+				and classes like '%${classes}%'
+			</if>
+			<if test="phonenum!=null">
+				and phonenum like '%${phonenum}%'
+			</if>
+			<if test="address!=null">
+				and address like '%${address}%'
+			</if>
+			<if test="pageSize!=0">
+				limit #{first},#{pageSize}
+			</if>
+		</where>
+	</select>
 </mapper>

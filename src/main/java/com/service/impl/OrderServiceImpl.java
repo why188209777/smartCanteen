@@ -43,4 +43,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getOrderByUserId(userId);
 	}
 
+	@Override
+	public List<Order> getOrderByMid(int mid) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderByMid(mid);
+	}
+
 }

@@ -12,4 +12,6 @@ public interface OrderDao {
 	public List<Order> getAllOrder();
 
 	public List<Order> getOrderByUserId(int userId);
+	
+	public List<Order> getOrderByMid(int mid);
 }

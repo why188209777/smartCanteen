@@ -18,8 +18,8 @@ public class OrderController {
 
 	@RequestMapping(value = "addOrder")
 	@ResponseBody
-	public boolean addOrder(String orderid, String createtime, String remark, int status, double total, int userid) {
-		Order order = new Order(orderid, createtime, remark, status, total, userid);
+	public boolean addOrder(String orderid, String createtime, String remark, int status, double total, int userid,int mid) {
+		Order order = new Order(orderid, createtime, remark, status, total, userid, mid);
 		int addOrder = orderService.addOrder(order);
 		return addOrder == 0 ? false : true;
 	}
@@ -42,6 +42,13 @@ public class OrderController {
 	@ResponseBody
 	public List<Order> getOrderByUserId(int userId) {
 		List<Order> list = orderService.getOrderByUserId(userId);
+		return list;
+	}
+	
+	@RequestMapping(value = "getOrderByMid")
+	@ResponseBody
+	public List<Order> getOrderByMid(int mid) {
+		List<Order> list = orderService.getOrderByMid(mid);
 		return list;
 	}
 }

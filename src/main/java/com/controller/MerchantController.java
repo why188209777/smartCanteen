@@ -39,6 +39,13 @@ public class MerchantController {
 		return updateMerchant == 0 ? false : true;
 	}
 
+	@RequestMapping(value = "getAllMerchant")
+	@ResponseBody
+	public List<Merchant> getAllMerchant() {
+		List<Merchant> list = merchantService.getAllMerchant();
+		return list;
+	}
+	
 	@RequestMapping(value = "getMerchantByMid")
 	@ResponseBody
 	public Merchant getMerchantByMid(int mid) {

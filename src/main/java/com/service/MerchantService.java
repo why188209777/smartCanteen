@@ -10,6 +10,8 @@ public interface MerchantService {
 	public int delMerchant(int mid);
 
 	public int updateMerchant(Merchant merchant);
+	
+	public List<Merchant> getAllMerchant();
 
 	public Merchant getMerchantByMid(int mid);
 	
