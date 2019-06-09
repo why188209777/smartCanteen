@@ -31,8 +31,8 @@
 		select * from food where
 		mid=#{mid}
 	</select>
-	<select id="getFoodByCondition" resultType="Food">
-		select * from food
+	<select id="getFoodCountByCondition" resultType="Integer">
+		select count(*) from food
 		<where>
 			1 = 1
 			<if test="fname != null">
@@ -41,8 +41,21 @@
 			<if test="mid != 0">
 				and mid = #{mid}
 			</if>
-			<if test="pageSize!=0">
-				limit #{first},#{pageSize}
+		</where>
+	</select>
+	
+	<select id="getFoodByConditionAndPage" resultType="Food">
+		select * from food
+		<where>
+			1 = 1
+			<if test="condition.fname != null">
+				and fname like '%${condition.fname}%'
+			</if>
+			<if test="condition.mid != 0">
+				and mid = #{condition.mid}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
 			</if>
 		</where>
 	</select>

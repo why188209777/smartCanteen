@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.Page;
 
 public interface FoodService {
 	public int addFood(Food food);
@@ -18,5 +19,7 @@ public interface FoodService {
 
 	List<Food> getFoodByMid(int mid);
 
-	public List<Food> getFoodByCondition(FoodCondition condition);
+	public int getFoodCountByCondition(FoodCondition condition);
+
+	public List<Food> getFoodByConditionAndPage(FoodCondition condition, Page page);
 }

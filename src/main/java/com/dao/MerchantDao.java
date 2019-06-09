@@ -2,8 +2,11 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.model.Merchant;
 import com.model.MerchantCondition;
+import com.model.Page;
 
 public interface MerchantDao {
 	public int addMerchant(Merchant merchant);
@@ -18,6 +21,9 @@ public interface MerchantDao {
 
 	public List<Merchant> getMerchantByCid(int cid);
 
-	// 条件分页查询
-	public List<Merchant> getMerchantByCondition(MerchantCondition condition);
+	public int getMerchantCountByCondition(MerchantCondition condition);
+
+	// 模糊和分页查询
+	public List<Merchant> getMerchantByConditionAndPage(@Param("condition") MerchantCondition condition,
+			@Param("page") Page page);
 }

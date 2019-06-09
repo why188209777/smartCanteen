@@ -26,8 +26,8 @@
 		select * from orders where
 		mid=#{mid}
 	</select>
-	<select id="getOrderByCondition" resultType="Order">
-		select * from orders
+	<select id="getOrderCountByCondition" resultType="Integer">
+		select count(*) from orders
 		<where>
 			1 = 1
 			<if test="startTime != null and endTime != null">
@@ -36,8 +36,21 @@
 			<if test="status != 0">
 				and status = #{status}
 			</if>
-			<if test="pageSize!=0">
-				limit #{first},#{pageSize}
+		</where>
+	</select>
+	<select id="getOrderByConditionAndPage" resultType="Order">
+		select * from orders
+		<where>
+			1 = 1
+			<if test="condition.startTime != null and condition.endTime != null">
+				and createtime between #{condition.startTime} and
+				#{condition.endTime}
+			</if>
+			<if test="condition.status != 0">
+				and status = #{condition.status}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
 			</if>
 		</where>
 	</select>

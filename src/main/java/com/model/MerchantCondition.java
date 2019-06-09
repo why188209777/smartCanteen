@@ -1,18 +1,17 @@
 package com.model;
 
 /*
- * 商家条件分页查询
+ * 商家模糊查询
  */
-public class MerchantCondition extends Page {
+public class MerchantCondition {
 
-	private String mname;
-	private int cid;
+	private String mname;  //商家名称
+	private int cid;  //所属食堂
 
 	public MerchantCondition() {
 	}
 
-	public MerchantCondition(String mname, int cid, int pageIndex, int pageSize) {
-		super(pageIndex, pageSize);
+	public MerchantCondition(String mname, int cid) {
 		this.mname = mname;
 		this.cid = cid;
 	}

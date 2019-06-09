@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Order;
+import com.model.OrderCondition;
+import com.model.Page;
 import com.service.OrderService;
 
 @Controller
@@ -50,5 +54,19 @@ public class OrderController {
 	public List<Order> getOrderByMid(int mid) {
 		List<Order> list = orderService.getOrderByMid(mid);
 		return list;
+	}
+	
+	@RequestMapping(value = "getOrderByConditionAndPage")
+	@ResponseBody
+	public Object getOrderByConditionAndPage(String startTime, String endTime, int status, int pageIndex, int pageSize) {
+		OrderCondition condition = new OrderCondition(startTime, endTime, status);
+		int count = orderService.getOrderCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		List<Order> list = orderService.getOrderByConditionAndPage(condition, page);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("list", list);
+		return map;
 	}
 }

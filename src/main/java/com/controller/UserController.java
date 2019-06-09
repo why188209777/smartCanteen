@@ -1,12 +1,15 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.model.Page;
 import com.model.User;
 import com.model.UserCondition;
 import com.service.UserService;
@@ -65,9 +68,15 @@ public class UserController {
 	
 	@RequestMapping(value = "page")
 	@ResponseBody
-	public List<User> getUserByCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address, int pageIndex, int pageSize){
-		UserCondition condition = new UserCondition(uname, idcard, studentid, classes, phonenum, address, pageIndex, pageSize);
-		List<User> list = userService.getUserByCondition(condition);
-		return list;
+	public Object getUserByConditionAndPage(String uname, String idcard, String studentid, String classes, String phonenum, String address, int pageIndex, int pageSize){
+		UserCondition condition = new UserCondition(null, null, "2018", null, null, null);
+		int count = userService.getUserCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		List<User> list = userService.getUserByConditionAndPage(condition, page);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("list", list);
+		return map;
 	}
 }

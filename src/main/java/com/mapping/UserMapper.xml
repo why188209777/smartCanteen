@@ -31,9 +31,8 @@
 		select * from user where id=#{id} and password=#{password}
 	</select>
 
-	<select id="getUserByCondition" parameterType="UserCondition"
-		resultType="User">
-		select * from user
+	<select id="getUserCountByCondition" resultType="Integer">
+		select count(*) from user
 		<where>
 			1 = 1
 			<if test="uname!=null">
@@ -54,8 +53,33 @@
 			<if test="address!=null">
 				and address like '%${address}%'
 			</if>
-			<if test="pageSize!=0">
-				limit #{first},#{pageSize}
+		</where>
+	</select>
+	<select id="getUserByConditionAndPage" parameterType="UserCondition"
+		resultType="User">
+		select * from user
+		<where>
+			1 = 1
+			<if test="condition.uname!=null">
+				and uname like '%${condition.uname}%'
+			</if>
+			<if test="condition.idcard!=null">
+				and idcard like '%${condition.idcard}%'
+			</if>
+			<if test="condition.studentid!=null">
+				and studentid like '%${condition.studentid}%'
+			</if>
+			<if test="condition.classes!=null">
+				and classes like '%${condition.classes}%'
+			</if>
+			<if test="condition.phonenum!=null">
+				and phonenum like '%${condition.phonenum}%'
+			</if>
+			<if test="condition.address!=null">
+				and address like '%${condition.address}%'
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
 			</if>
 		</where>
 	</select>

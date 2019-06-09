@@ -1,6 +1,6 @@
 package com.model;
 
-public class OrderCondition extends Page {
+public class OrderCondition {
 
 	private String startTime;
 	private String endTime;
@@ -9,8 +9,7 @@ public class OrderCondition extends Page {
 	public OrderCondition() {
 	}
 
-	public OrderCondition(String startTime, String endTime, int status, int pageIndex, int pageSize) {
-		super(pageIndex, pageSize);
+	public OrderCondition(String startTime, String endTime, int status) {
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.status = status;

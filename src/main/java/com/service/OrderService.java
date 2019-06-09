@@ -2,8 +2,11 @@ package com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.model.Order;
 import com.model.OrderCondition;
+import com.model.Page;
 
 public interface OrderService {
 	public int addOrder(Order order);
@@ -16,5 +19,8 @@ public interface OrderService {
 
 	public List<Order> getOrderByMid(int mid);
 
-	public List<Order> getOrderByCondition(OrderCondition condition);
+	public int getOrderCountByCondition(OrderCondition condition);
+
+	public List<Order> getOrderByConditionAndPage(@Param("condition") OrderCondition condition,
+			@Param("page") Page page);
 }

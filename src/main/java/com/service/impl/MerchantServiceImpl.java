@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dao.MerchantDao;
 import com.model.Merchant;
 import com.model.MerchantCondition;
+import com.model.Page;
 import com.service.MerchantService;
 
 @Service
@@ -57,9 +58,15 @@ public class MerchantServiceImpl implements MerchantService {
 	}
 
 	@Override
-	public List<Merchant> getMerchantByCondition(MerchantCondition condition) {
+	public int getMerchantCountByCondition(MerchantCondition condition) {
 		// TODO Auto-generated method stub
-		return merchantDao.getMerchantByCondition(condition);
+		return merchantDao.getMerchantCountByCondition(condition);
+	}
+
+	@Override
+	public List<Merchant> getMerchantByConditionAndPage(MerchantCondition condition, Page page) {
+		// TODO Auto-generated method stub
+		return merchantDao.getMerchantByConditionAndPage(condition, page);
 	}
 
 }

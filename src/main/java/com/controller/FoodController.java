@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.Page;
 import com.service.FoodService;
 
 @Controller
@@ -61,11 +64,17 @@ public class FoodController {
 		return list;
 	}
 	
-	@RequestMapping(value = "getFoodByCondition")
+	@RequestMapping(value = "getFoodByConditionAndPage")
 	@ResponseBody
-	public List<Food> getFoodByCondition(String fname, int mid, int pageIndex, int pageSize) {
-		FoodCondition condition = new FoodCondition(fname, mid, pageIndex, pageSize);
-		List<Food> list = foodService.getFoodByCondition(condition);
-		return list;
+	public Object getFoodByConditionAndPage(String fname, int mid, int pageIndex, int pageSize) {
+		FoodCondition condition = new FoodCondition(fname, mid);
+		int count = foodService.getFoodCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(pageIndex, pageSize, totalSize);
+		List<Food> list = foodService.getFoodByConditionAndPage(condition, page);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("list", list);
+		return map;
 	}
 }

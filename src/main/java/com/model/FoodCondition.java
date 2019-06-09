@@ -1,15 +1,17 @@
 package com.model;
 
-public class FoodCondition extends Page {
+/*
+ * 餐品模糊查询
+ */
+public class FoodCondition {
 
-	private String fname;
-	private int mid;
+	private String fname;  //餐品名称
+	private int mid;  //所属商家
 
 	public FoodCondition() {
 	}
 
-	public FoodCondition(String fname, int mid, int pageIndex, int pageSize) {
-		super(pageIndex, pageSize);
+	public FoodCondition(String fname, int mid) {
 		this.fname = fname;
 		this.mid = mid;
 	}

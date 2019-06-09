@@ -7,7 +7,7 @@
 		merchant(mname,description,cid)
 		values(#{mname},#{description},#{cid});
 	</insert>
-	<delete id="delMerchant" parameterType="Merchant">
+	<delete id="delMerchant">
 		delete from merchant
 		where mid=#{mid}
 	</delete>
@@ -27,8 +27,9 @@
 		select * from merchant
 		where cid=#{cid}
 	</select>
-	<select id="getMerchantByCondition" resultType="Merchant">
-		select * from merchant
+
+	<select id="getMerchantCountByCondition" resultType="Integer">
+		select count(*) from merchant
 		<where>
 			1 = 1
 			<if test="mname != null">
@@ -37,8 +38,21 @@
 			<if test="cid != 0">
 				and cid = #{cid}
 			</if>
-			<if test="pageSize!=0">
-				limit #{first},#{pageSize}
+		</where>
+	</select>
+
+	<select id="getMerchantByConditionAndPage" resultType="Merchant">
+		select * from merchant
+		<where>
+			1 = 1
+			<if test="condition.mname != null">
+				and mname like '%${condition.mname}%'
+			</if>
+			<if test="condition.cid != 0">
+				and cid = #{condition.cid}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
 			</if>
 		</where>
 	</select>
