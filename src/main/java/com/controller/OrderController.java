@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alipay.api.internal.util.StringUtils;
 import com.model.Order;
 import com.model.OrderCondition;
 import com.model.Page;
@@ -66,11 +67,18 @@ public class OrderController {
 	}
 	@RequestMapping(value = "getOrderByConditionAndPage")
 	@ResponseBody
-	public Object getOrderByConditionAndPage(String startTime, String endTime, int status, int pageIndex, int pageSize) {
-		OrderCondition condition = new OrderCondition(startTime, endTime, status);
+	public Object getOrderByConditionAndPage(String startTime, String endTime, int status, int mid, int pageIndex, int pageSize) {
+		/*当输入框没有输入值时*/
+		if (StringUtils.isEmpty(startTime)) {
+			startTime = null;
+		}
+		if (StringUtils.isEmpty(endTime)) {
+			endTime = null;
+		}
+		OrderCondition condition = new OrderCondition(startTime, endTime, status, mid);
 		int count = orderService.getOrderCountByCondition(condition);
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
-		Page page = new Page(1, pageSize, totalSize);
+		Page page = new Page(pageIndex, pageSize, totalSize);
 		List<Order> list = orderService.getOrderByConditionAndPage(condition, page);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);

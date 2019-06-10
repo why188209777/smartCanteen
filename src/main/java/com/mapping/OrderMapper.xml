@@ -45,15 +45,15 @@
 		select * from orders
 		<where>
 			1 = 1
-			<if test="mid != 0">
-				and mid = #{condition.mid}
-			</if>
 			<if test="condition.startTime != null and condition.endTime != null">
 				and createtime between #{condition.startTime} and
 				#{condition.endTime}
 			</if>
 			<if test="condition.status != 0">
 				and status = #{condition.status}
+			</if>
+			<if test="condition.mid != 0">
+				and mid = #{condition.mid}
 			</if>
 			<if test="page.pageSize!=0">
 				limit #{page.first},#{page.pageSize}
