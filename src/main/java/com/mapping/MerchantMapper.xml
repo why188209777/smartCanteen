@@ -13,6 +13,9 @@
 		update merchant set mname=#{mname} ,description=#{description},cid=#{cid}
 		where mid=#{mid}
 	</update>
+	<select id="getAllMerchant" resultType="Merchant">
+		select * from merchant
+	</select>
 	<select id="getMerchantByMid" resultType="Merchant">
 		select * from merchant where mid=#{mid}
 	</select>
