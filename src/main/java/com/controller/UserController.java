@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alipay.api.internal.util.StringUtils;
 import com.model.Page;
 import com.model.User;
 import com.model.UserCondition;
@@ -66,13 +67,20 @@ public class UserController {
 		return user;
 	}
 	
-	@RequestMapping(value = "page")
+	@RequestMapping(value = "getUserByConditionAndPage")
 	@ResponseBody
 	public Object getUserByConditionAndPage(String uname, String idcard, String studentid, String classes, String phonenum, String address, int pageIndex, int pageSize){
-		UserCondition condition = new UserCondition(null, null, "2018", null, null, null);
+		/*当输入框没有输入值时*/
+		if (StringUtils.isEmpty(uname)) { uname = null;	}
+		if (StringUtils.isEmpty(idcard)) { idcard = null;	}
+		if (StringUtils.isEmpty(studentid)) { studentid = null;	}
+		if (StringUtils.isEmpty(classes)) { classes = null;	}
+		if (StringUtils.isEmpty(phonenum)) { phonenum = null;	}
+		if (StringUtils.isEmpty(address)) { address = null;	}
+		UserCondition condition = new UserCondition(uname, idcard, studentid, classes, phonenum, address);
 		int count = userService.getUserCountByCondition(condition);
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
-		Page page = new Page(1, pageSize, totalSize);
+		Page page = new Page(pageIndex, pageSize, totalSize);
 		List<User> list = userService.getUserByConditionAndPage(condition, page);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);
