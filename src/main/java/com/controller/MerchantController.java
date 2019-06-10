@@ -39,8 +39,8 @@ public class MerchantController {
 
 	@RequestMapping(value = "updateMerchant")
 	@ResponseBody
-	public boolean updateMerchant(int mid) {
-		Merchant merchant = new Merchant(mid);
+	public boolean updateMerchant(int mid, String mname, String description, int cid) {
+		Merchant merchant = new Merchant(mid,mname,description,cid);
 		int updateMerchant = merchantService.updateMerchant(merchant);
 		return updateMerchant == 0 ? false : true;
 	}
