@@ -10,6 +10,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dao.FoodDao;
 import com.model.Food;
+import com.model.FoodCondition;
+import com.model.Page;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-mybatis.xml")
@@ -45,5 +47,18 @@ public class FoodTest {
 			System.out.println(list2);
 		 }
 		
+	}
+	
+	@Test
+	public void getFoodByConditionAndPage(){
+		int pageSize = 5;
+		FoodCondition condition = new FoodCondition("冬瓜", 1);
+		int count = foodDao.getFoodCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		System.out.println(condition);
+		System.out.println(page);
+		List<Food> list = foodDao.getFoodByConditionAndPage(condition, page);
+		System.out.println(list);
 	}
 }

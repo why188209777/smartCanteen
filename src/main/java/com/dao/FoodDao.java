@@ -2,7 +2,11 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.model.Food;
+import com.model.FoodCondition;
+import com.model.Page;
 
 public interface FoodDao {
 	public int addFood(Food food);
@@ -13,7 +17,12 @@ public interface FoodDao {
 
 	public Food getFoodByFoodId(int foodId);
 
-	List<Food> getAllFood();
+	public List<Food> getAllFood();
 
-	List<Food> getFoodByMid(int mid);
+	public List<Food> getFoodByMid(int mid);
+
+	public int getFoodCountByCondition(FoodCondition condition);
+
+	// 模糊和分页查询
+	public List<Food> getFoodByConditionAndPage(@Param("condition") FoodCondition condition, @Param("page") Page page);
 }

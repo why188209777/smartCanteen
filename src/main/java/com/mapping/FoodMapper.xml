@@ -19,7 +19,8 @@
 	</update>
 	<!-- 根据id查询 -->
 	<select id="getFoodByFoodId" resultType="Food">
-		select * from food where foodid=#{foodid}
+		select * from food where
+		foodid=#{foodid}
 	</select>
 	<!-- 查询所有 -->
 	<select id="getAllFood" resultType="Food">
@@ -27,6 +28,35 @@
 	</select>
 	<!-- 根据mid查询 -->
 	<select id="getFoodByMid" resultType="Food">
-		select * from food where mid=#{mid}
+		select * from food where
+		mid=#{mid}
+	</select>
+	<select id="getFoodCountByCondition" resultType="Integer">
+		select count(*) from food
+		<where>
+			1 = 1
+			<if test="fname != null">
+				and fname like '%${fname}%'
+			</if>
+			<if test="mid != 0">
+				and mid = #{mid}
+			</if>
+		</where>
+	</select>
+	
+	<select id="getFoodByConditionAndPage" resultType="Food">
+		select * from food
+		<where>
+			1 = 1
+			<if test="condition.fname != null">
+				and fname like '%${condition.fname}%'
+			</if>
+			<if test="condition.mid != 0">
+				and mid = #{condition.mid}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
+			</if>
+		</where>
 	</select>
 </mapper>

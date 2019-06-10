@@ -3,7 +3,7 @@ package com.model;
 /*
  * 用户条件分页查询
  */
-public class UserCondition extends Page {
+public class UserCondition {
 
 	private String uname;
 	private String idcard;
@@ -16,8 +16,7 @@ public class UserCondition extends Page {
 	public UserCondition() {
 	}
 
-	public UserCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address,int pageIndex, int pageSize) {
-		super(pageIndex, pageSize);
+	public UserCondition(String uname, String idcard, String studentid, String classes, String phonenum, String address) {
 		this.uname = uname;
 		this.idcard = idcard;
 		this.studentid = studentid;

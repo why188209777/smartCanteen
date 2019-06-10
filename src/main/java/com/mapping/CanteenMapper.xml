@@ -1,20 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.dao.CanteenDao">
-	<select id="addCanteen">
-		INSERT INTO canteen(cname,description) VALUES
+	<select id="addCanteen" parameterType="Canteen">
+		INSERT INTO
+		canteen(cname,description) VALUES
 		(#{cname},#{description})
 	</select>
-	<select id="updateCanteen">
-		UPDATE canteen SET cname = #{cname},
+	<select id="delCanteen">
+		delete from canteen where cid = #{cid}
+	</select>
+	<select id="updateCanteen" parameterType="Canteen">
+		UPDATE canteen SET
+		cname = #{cname},
 		description=#{description}
 		WHERE cid=#{cid}
 	</select>
 	<select id="getCanteenByCid" resultType="Canteen">
-		SELECT *FROM canteen
+		SELECT * FROM canteen
 		WHERE cid=#{cid}
 	</select>
 	<select id="getAllCanteen" resultType="Canteen">
-	select * from canteen
+		select * from canteen
+	</select>
+	<select id="getCanteenByPage" parameterType="Page" resultType="Canteen">
+		select * from canteen
+		<if test="pageSize!=0">
+			limit #{first},#{pageSize}
+		</if>
+	</select>
+	<select id="getCanteenCount" resultType="Integer">
+		select count(*) from canteen
 	</select>
 </mapper>

@@ -10,7 +10,9 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dao.UserDao;
+import com.model.Page;
 import com.model.User;
+import com.model.UserCondition;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-mybatis.xml")
@@ -61,6 +63,17 @@ public class UserTest {
 		password = scanner.next();
 		User user = userDao.login(sname, password);
 		System.out.println(user);
+	}
+	
+	@Test
+	public void getUserByConditionAndPage(){
+		int pageSize = 5;
+		UserCondition condition = new UserCondition(null, null, "2018", null, null, null);
+		int count = userDao.getUserCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		List<User> list = userDao.getUserByConditionAndPage(condition, page);
+		System.out.println(list);
 	}
 
 }
