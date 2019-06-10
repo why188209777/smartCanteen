@@ -17,7 +17,7 @@ public interface CanteenDao {
 
 	public List<Canteen> getAllCanteen();
 
-	public List<Canteen> getCanteenByPage(Page page);
-
 	public int getCanteenCount();
+	
+	public List<Canteen> getCanteenByPage(Page page);
 }
