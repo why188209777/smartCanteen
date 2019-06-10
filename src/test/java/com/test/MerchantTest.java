@@ -34,7 +34,7 @@ public class MerchantTest {
 
 	@Test
 	public void delMerchant() {
-		int delMerchant = merchantDao.delMerchant(1);
+		int delMerchant = merchantDao.delMerchant(6);
 		System.out.println(delMerchant);
 	}
 
