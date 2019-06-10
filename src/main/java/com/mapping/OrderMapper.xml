@@ -30,6 +30,9 @@
 		select count(*) from orders
 		<where>
 			1 = 1
+			<if test="mid != 0">
+				and mid = #{mid}
+			</if>
 			<if test="startTime != null and endTime != null">
 				and createtime between #{startTime} and #{endTime}
 			</if>
@@ -42,6 +45,9 @@
 		select * from orders
 		<where>
 			1 = 1
+			<if test="mid != 0">
+				and mid = #{condition.mid}
+			</if>
 			<if test="condition.startTime != null and condition.endTime != null">
 				and createtime between #{condition.startTime} and
 				#{condition.endTime}
