@@ -10,13 +10,14 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.dao.OrderDao;
 import com.model.Order;
+import com.service.OrderService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:spring-mybatis.xml")
 public class OrderTest {
 	
 	@Autowired
-	private OrderDao orderdao;
+	private OrderService orderdao;
 	
 	@Test
 	public void test(){
@@ -33,9 +34,13 @@ public class OrderTest {
 		System.out.println(addOrder);
 		Order orderByOrderId = orderdao.getOrderByOrderId("2");
 		System.out.println(orderByOrderId);*/
-		List<Order> orderByMid = orderdao.getOrderByMid(2);
+		/*List<Order> orderByMid = orderdao.getOrderByMid(2);
 		for(Order list3:orderByMid){
 			System.out.println(list3);
+		}*/
+		List<Order> orderByTime = orderdao.getOrderByTime(1,"2019-06-02");
+		for(Order list4:orderByTime){
+			System.out.println(list4);
 		}
 	}
 }

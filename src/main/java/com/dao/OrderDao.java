@@ -2,6 +2,8 @@ package com.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.model.Order;
 
 public interface OrderDao {
@@ -14,4 +16,6 @@ public interface OrderDao {
 	public List<Order> getOrderByUserId(int userId);
 	
 	public List<Order> getOrderByMid(int mid);
+	
+	public List<Order> getOrderByTime(@Param("mid") int mid, @Param("createtime") String createtime);
 }

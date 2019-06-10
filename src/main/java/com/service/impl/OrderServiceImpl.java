@@ -49,4 +49,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getOrderByMid(mid);
 	}
 
+	@Override
+	public List<Order> getOrderByTime(int mid, String createtime) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderByTime(mid, createtime);
+	}
+
 }

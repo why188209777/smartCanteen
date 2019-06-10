@@ -23,4 +23,8 @@
 	<select id="getOrderByMid" resultType="Order">
 		select * from orders where mid=#{mid}
 	</select>
+	<!-- 根据mid,时间查询 -->
+	<select id="getOrderByTime" resultType="Order">
+		select * from orders where mid=#{mid} and createtime=#{createtime}
+	</select>
 </mapper>

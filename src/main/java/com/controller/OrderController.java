@@ -51,4 +51,14 @@ public class OrderController {
 		List<Order> list = orderService.getOrderByMid(mid);
 		return list;
 	}
+	
+	@RequestMapping(value = "getOrderByTime")
+	@ResponseBody
+	public List<Order> getOrderByTime(int mid,String createtime) {
+		System.out.println(mid);
+		System.out.println(createtime);
+		List<Order> list = orderService.getOrderByTime(mid, createtime);
+		System.out.println(list);
+		return list;
+	}
 }
