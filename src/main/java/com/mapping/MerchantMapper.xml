@@ -3,23 +3,57 @@
 <mapper namespace="com.dao.MerchantDao">
 
 	<insert id="addMerchant" parameterType="Merchant">
-		insert into merchant(mname,description,cid)
+		insert into
+		merchant(mname,description,cid)
 		values(#{mname},#{description},#{cid});
 	</insert>
-	<delete id="delMerchant" parameterType="Merchant">
-		delete from merchant where mid=#{mid}
+	<delete id="delMerchant">
+		delete from merchant
+		where mid=#{mid}
 	</delete>
 	<update id="updateMerchant">
-		update merchant set mname=#{mname} ,description=#{description},cid=#{cid}
+		update merchant set mname=#{mname}
+		,description=#{description},cid=#{cid}
 		where mid=#{mid}
 	</update>
 	<select id="getAllMerchant" resultType="Merchant">
 		select * from merchant
 	</select>
 	<select id="getMerchantByMid" resultType="Merchant">
-		select * from merchant where mid=#{mid}
+		select * from merchant
+		where mid=#{mid}
 	</select>
 	<select id="getMerchantsByCid" resultType="Merchant">
-		select * from merchant where cid=#{cid}
+		select * from merchant
+		where cid=#{cid}
+	</select>
+
+	<select id="getMerchantCountByCondition" resultType="Integer">
+		select count(*) from merchant
+		<where>
+			1 = 1
+			<if test="mname != null">
+				and mname like '%${mname}%'
+			</if>
+			<if test="cid != 0">
+				and cid = #{cid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getMerchantByConditionAndPage" resultType="Merchant">
+		select * from merchant
+		<where>
+			1 = 1
+			<if test="condition.mname != null">
+				and mname like '%${condition.mname}%'
+			</if>
+			<if test="condition.cid != 0">
+				and cid = #{condition.cid}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
+			</if>
+		</where>
 	</select>
 </mapper>

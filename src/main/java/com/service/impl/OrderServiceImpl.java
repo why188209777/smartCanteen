@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import com.dao.OrderDao;
 import com.model.Order;
+import com.model.OrderCondition;
+import com.model.Page;
 import com.service.OrderService;
 
 @Service
@@ -47,6 +49,18 @@ public class OrderServiceImpl implements OrderService {
 	public List<Order> getOrderByMid(int mid) {
 		// TODO Auto-generated method stub
 		return orderDao.getOrderByMid(mid);
+	}
+
+	@Override
+	public int getOrderCountByCondition(OrderCondition condition) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderCountByCondition(condition);
+	}
+
+	@Override
+	public List<Order> getOrderByConditionAndPage(OrderCondition condition, Page page) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderByConditionAndPage(condition, page);
 	}
 
 }

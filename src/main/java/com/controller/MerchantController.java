@@ -1,6 +1,8 @@
 package com.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -8,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.model.Merchant;
+import com.model.MerchantCondition;
+import com.model.Page;
 import com.service.MerchantService;
 
 @Controller
@@ -53,10 +57,24 @@ public class MerchantController {
 		return merchant;
 	}
 
-	@RequestMapping(value = "getMerchantsByCid")
+	@RequestMapping(value = "getMerchantByCid")
 	@ResponseBody
-	public List<Merchant> getMerchantsByCid(int cid) {
-		List<Merchant> list = merchantService.getMerchantsByCid(cid);
+	public List<Merchant> getMerchantByCid(int cid) {
+		List<Merchant> list = merchantService.getMerchantByCid(cid);
 		return list;
+	}
+	
+	@RequestMapping(value = "getMerchantByConditionAndPage")
+	@ResponseBody
+	public Object getMerchantByConditionAndPage(String mname, int cid, int pageIndex, int pageSize) {
+		MerchantCondition condition = new MerchantCondition(mname, cid);
+		int count = merchantService.getMerchantCountByCondition(condition);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		List<Merchant> list = merchantService.getMerchantByConditionAndPage(condition, page);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("list", list);
+		return map;
 	}
 }

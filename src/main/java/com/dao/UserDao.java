@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Param;
 
+import com.model.Page;
 import com.model.User;
 import com.model.UserCondition;
 
@@ -20,7 +21,10 @@ public interface UserDao {
 	public List<User> getAllUser();
 
 	public User login(@Param("uname") String uname, @Param("password") String password);
-	
-	//条件分页查询
-	public List<User> getUserByCondition(UserCondition condition);
+
+	public int getUserCountByCondition(UserCondition condition);
+
+	// 模糊和分页查询
+	public List<User> getUserByConditionAndPage(@Param("condition") UserCondition condition,
+			@Param("page") Page page);
 }

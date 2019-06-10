@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.dao.UserDao;
+import com.model.Page;
 import com.model.User;
 import com.model.UserCondition;
 import com.service.UserService;
@@ -49,9 +50,15 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public List<User> getUserByCondition(UserCondition condition) {
+	public int getUserCountByCondition(UserCondition condition) {
 		// TODO Auto-generated method stub
-		return userDao.getUserByCondition(condition);
+		return userDao.getUserCountByCondition(condition);
+	}
+
+	@Override
+	public List<User> getUserByConditionAndPage(UserCondition condition, Page page) {
+		// TODO Auto-generated method stub
+		return userDao.getUserByConditionAndPage(condition, page);
 	}
 
 }
