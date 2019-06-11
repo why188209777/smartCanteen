@@ -65,7 +65,7 @@ public class OrderTest {
 	@Test
 	public void getOrderByConditionAndPage() {
 		int pageSize = 5;
-		OrderCondition condition = new OrderCondition(null, null, 1);
+		OrderCondition condition = new OrderCondition(null, null, 1, 1);
 		int count = orderdao.getOrderCountByCondition(condition);
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
 		Page page = new Page(1, pageSize, totalSize);
