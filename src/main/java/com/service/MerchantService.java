@@ -25,4 +25,6 @@ public interface MerchantService {
 
 	public List<Merchant> getMerchantByConditionAndPage(@Param("condition") MerchantCondition condition,
 			@Param("page") Page page);
+	
+	public Merchant login(@Param("mname") String mname, @Param("password") String password);
 }

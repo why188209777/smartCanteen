@@ -69,4 +69,10 @@ public class MerchantServiceImpl implements MerchantService {
 		return merchantDao.getMerchantByConditionAndPage(condition, page);
 	}
 
+	@Override
+	public Merchant login(String mname, String password) {
+		// TODO Auto-generated method stub
+		return merchantDao.login(mname, password);
+	}
+
 }
