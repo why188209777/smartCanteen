@@ -23,7 +23,7 @@
 		select * from merchant
 		where mid=#{mid}
 	</select>
-	<select id="getMerchantsByCid" resultType="Merchant">
+	<select id="getMerchantByCid" resultType="Merchant">
 		select * from merchant
 		where cid=#{cid}
 	</select>

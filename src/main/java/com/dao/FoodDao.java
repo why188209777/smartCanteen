@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.FoodDynamic;
 import com.model.Page;
 
 public interface FoodDao {
@@ -25,4 +26,7 @@ public interface FoodDao {
 
 	// 模糊和分页查询
 	public List<Food> getFoodByConditionAndPage(@Param("condition") FoodCondition condition, @Param("page") Page page);
+	
+	//根据餐厅id和店铺id动态查询
+	public List<Food> getFoodByCanteenAndMerchant(FoodDynamic foodDynamic);
 }

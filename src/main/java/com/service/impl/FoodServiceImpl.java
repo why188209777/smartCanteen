@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.dao.FoodDao;
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.FoodDynamic;
 import com.model.Page;
 import com.service.FoodService;
 
@@ -67,6 +68,12 @@ public class FoodServiceImpl implements FoodService {
 	public List<Food> getFoodByConditionAndPage(FoodCondition condition, Page page) {
 		// TODO Auto-generated method stub
 		return foodDao.getFoodByConditionAndPage(condition, page);
+	}
+
+	@Override
+	public List<Food> getFoodByCanteenAndMerchant(FoodDynamic foodDynamic) {
+		// TODO Auto-generated method stub
+		return foodDao.getFoodByCanteenAndMerchant(foodDynamic);
 	}
 
 }

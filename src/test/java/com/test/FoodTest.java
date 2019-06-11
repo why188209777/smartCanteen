@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.dao.FoodDao;
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.FoodDynamic;
 import com.model.Page;
 
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -60,5 +61,14 @@ public class FoodTest {
 		System.out.println(page);
 		List<Food> list = foodDao.getFoodByConditionAndPage(condition, page);
 		System.out.println(list);
+	}
+	
+	@Test
+	public void getFoodByCanteenAndMerchant(){
+		FoodDynamic foodDynamic=new FoodDynamic(1,1);
+		List<Food> list = foodDao.getFoodByCanteenAndMerchant(foodDynamic);
+		for (Food food : list) {
+			System.out.println(food);
+		}
 	}
 }
