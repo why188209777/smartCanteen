@@ -20,7 +20,7 @@ public interface UserDao {
 
 	public List<User> getAllUser();
 
-	public User login(@Param("uname") String uname, @Param("password") String password);
+	public User login(@Param("name") String name, @Param("password") String password);
 
 	public int getUserCountByCondition(UserCondition condition);
 

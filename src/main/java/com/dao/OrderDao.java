@@ -18,6 +18,8 @@ public interface OrderDao {
 	public List<Order> getOrderByUserId(int userId);
 
 	public List<Order> getOrderByMid(int mid);
+	
+	public List<Order> getOrderByTime(@Param("mid") int mid, @Param("createtime") String createtime);
 
 	public int getOrderCountByCondition(OrderCondition condition);
 

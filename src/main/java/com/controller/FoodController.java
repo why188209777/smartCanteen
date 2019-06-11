@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alipay.api.internal.util.StringUtils;
 import com.model.Food;
 import com.model.FoodCondition;
 import com.model.FoodDynamic;
@@ -68,6 +69,10 @@ public class FoodController {
 	@RequestMapping(value = "getFoodByConditionAndPage")
 	@ResponseBody
 	public Object getFoodByConditionAndPage(String fname, int mid, int pageIndex, int pageSize) {
+		/*当输入框没有输入值时*/
+		if (StringUtils.isEmpty(fname)) {
+			fname = null;
+		}
 		FoodCondition condition = new FoodCondition(fname, mid);
 		int count = foodService.getFoodCountByCondition(condition);
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;

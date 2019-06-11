@@ -52,6 +52,10 @@ public class OrderServiceImpl implements OrderService {
 	}
 
 	@Override
+	public List<Order> getOrderByTime(int mid, String createtime) {
+		// TODO Auto-generated method stub
+		return orderDao.getOrderByTime(mid, createtime);
+	}
 	public int getOrderCountByCondition(OrderCondition condition) {
 		// TODO Auto-generated method stub
 		return orderDao.getOrderCountByCondition(condition);

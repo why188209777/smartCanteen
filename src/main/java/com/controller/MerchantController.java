@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.alipay.api.internal.util.StringUtils;
 import com.model.Merchant;
 import com.model.MerchantCondition;
 import com.model.Page;
@@ -37,8 +39,8 @@ public class MerchantController {
 
 	@RequestMapping(value = "updateMerchant")
 	@ResponseBody
-	public boolean updateMerchant(int mid) {
-		Merchant merchant = new Merchant(mid);
+	public boolean updateMerchant(int mid, String mname, String description, int cid) {
+		Merchant merchant = new Merchant(mid,mname,description,cid);
 		int updateMerchant = merchantService.updateMerchant(merchant);
 		return updateMerchant == 0 ? false : true;
 	}
@@ -66,11 +68,17 @@ public class MerchantController {
 	
 	@RequestMapping(value = "getMerchantByConditionAndPage")
 	@ResponseBody
-	public Object getMerchantByConditionAndPage(String mname, int cid, int pageIndex, int pageSize) {
+	public Object getMerchantByConditionAndPage(String mname, @RequestParam(required = false, defaultValue = "0") Integer cid, int pageIndex, int pageSize) {
+		/*当输入框没有输入值时*/
+		if (StringUtils.isEmpty(mname)) {
+			mname = null;
+		}
+		System.out.println(pageIndex + " " + pageSize);
 		MerchantCondition condition = new MerchantCondition(mname, cid);
+		System.out.println(condition);
 		int count = merchantService.getMerchantCountByCondition(condition);
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
-		Page page = new Page(1, pageSize, totalSize);
+		Page page = new Page(pageIndex, pageSize, totalSize);
 		List<Merchant> list = merchantService.getMerchantByConditionAndPage(condition, page);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);

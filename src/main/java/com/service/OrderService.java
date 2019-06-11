@@ -18,6 +18,8 @@ public interface OrderService {
 	public List<Order> getOrderByUserId(int userId);
 
 	public List<Order> getOrderByMid(int mid);
+	
+	public List<Order> getOrderByTime(int mid,String createtime);
 
 	public int getOrderCountByCondition(OrderCondition condition);
 
