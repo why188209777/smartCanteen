@@ -26,4 +26,7 @@ public interface MerchantDao {
 	// 模糊和分页查询
 	public List<Merchant> getMerchantByConditionAndPage(@Param("condition") MerchantCondition condition,
 			@Param("page") Page page);
+	
+	//登录
+	public Merchant login(@Param("mname") String mname, @Param("password") String password);
 }
