@@ -25,9 +25,11 @@ public class ImgController {
 	@RequestMapping(value = "upload", method = { RequestMethod.POST })
 	@ResponseBody
 	public Object headImg(@RequestParam(value = "file", required = false) MultipartFile file,
+			@RequestParam(required = false) String imgName,
 			HttpServletRequest request, HttpServletResponse response) throws Exception {
+		System.out.println("传入文件名：" + imgName);
 		String prefix = "";
-		String dateStr = "";
+		//String dateStr = "";
 		// 保存上传
 		OutputStream out = null;
 		InputStream fileInput = null;
@@ -35,13 +37,13 @@ public class ImgController {
 			if (file != null) {
 				String originalName = file.getOriginalFilename();
 				prefix = originalName.substring(originalName.lastIndexOf(".") + 1);
-				dateStr = new SimpleDateFormat().format(Calendar.getInstance().getTime());
-				String filepath = request.getServletContext().getRealPath("/static")  + dateStr + "."
+				//dateStr = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
+				String filepath = request.getServletContext().getRealPath("/web/images/foodimg") + File.separator + imgName + "."
 						+ prefix;
 				filepath = filepath.replace("\\", "/");
 				File files = new File(filepath);
 				// 打印查看上传路径
-				System.out.println("anc"+filepath);
+				System.out.println("图片路径："+filepath);
 				if (!files.getParentFile().exists()) {
 					files.getParentFile().mkdirs();
 				}
@@ -60,7 +62,7 @@ public class ImgController {
 			}
 		}
 		Map<String, Object> map = new HashMap<>();
-		map.put("src", "../../../static" + dateStr + "." + prefix);
+		map.put("src", "../web/images/foodimg/" + imgName + "." + prefix);
 		return map;
 	}
 }
