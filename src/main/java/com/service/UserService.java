@@ -17,6 +17,8 @@ public interface UserService {
 
 	public User getUserByStudentId(String studentId);
 
+	public User getUserByUserId(int id);
+	
 	public List<User> getAllUser();
 
 	public User login(String name, String password);

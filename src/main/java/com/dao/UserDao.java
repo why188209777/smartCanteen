@@ -18,6 +18,8 @@ public interface UserDao {
 
 	public User getUserByStudentId(String studentId);
 
+	public User getUserByUserId(int id);
+	
 	public List<User> getAllUser();
 
 	public User login(@Param("name") String name, @Param("password") String password);

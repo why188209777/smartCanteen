@@ -40,7 +40,8 @@ public class UserTest {
 
 	@Test
 	public void getIdTest() {
-		User user = userDao.getUserByStudentId("2018b11065");
+		/*User user = userDao.getUserByStudentId("2018b11065");*/
+		User user = userDao.getUserByUserId(1);
 		System.out.println(user);
 	}
 

@@ -66,6 +66,7 @@ $(function(){
 				if(data!=null){
 					alert("登录成功");
 					//session存储
+					sessionStorage.setItem("userid",data.id);
 					sessionStorage.setItem("user",user);
 					sessionStorage.setItem("upwd",upwd);
 					window.location.href="index.html";

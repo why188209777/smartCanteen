@@ -61,6 +61,13 @@ public class UserController {
 		return user;
 	}
 
+	@RequestMapping(value = "getUserByUserId")
+	@ResponseBody
+	public User getUserByUserId(int id) {
+		User user = userService.getUserByUserId(id);
+		return user;
+	}
+	
 	@RequestMapping(value = "login")
 	@ResponseBody
 	public User login(String uname, String password) {

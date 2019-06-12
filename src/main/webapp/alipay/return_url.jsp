@@ -53,11 +53,34 @@
 		String total_amount = new String(request.getParameter("total_amount").getBytes("ISO-8859-1"),"UTF-8");
 		
 		out.println("trade_no:"+trade_no+"<br/>out_trade_no:"+out_trade_no+"<br/>total_amount:"+total_amount);
+		response.sendRedirect("../order.html?out_trade_no="+out_trade_no);
+		
 	}else {
 		out.println("验签失败");
 	}
 	//——请在这里编写您的程序（以上代码仅作参考）——
+	
 %>
 <body>
+	<!-- <p>支付成功！</p>
+	<span id="timeCount"></span>秒钟后返回购物车页面！ -->
 </body>
+<script type="text/javascript" src="../js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript">
+	/* var t=3;
+	$(function(){
+		setInterval("count()",1000); //定义一个定时器
+		$("#timeCount").html(t); //显示当前的秒数
+	});
+	function count(){
+		t --; //秒数自减
+		if(t >= 0){
+			$("#timeCount").html(t); //刷新当前的秒数，重新显示秒数
+		}else{
+			clearInterval();//这个可以不用，因为页面都要跳转了，要了也没多大差别
+			window.location.href="../checkout.html"; // 设置跳转的链接
+		}
+	} */
+	
+</script>
 </html>
