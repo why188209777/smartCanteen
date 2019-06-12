@@ -28,7 +28,8 @@
 	</select>
 
 	<select id="login" resultType="User"><!--用户登录 -->
-		select * from user where uname = #{name} or phonenum = #{name} and password=#{password}
+		select * from user where uname = #{name} or phonenum = #{name} and
+		password=#{password}
 	</select>
 
 	<select id="getUserCountByCondition" resultType="Integer">
@@ -83,4 +84,11 @@
 			</if>
 		</where>
 	</select>
+
+	<update id="changePassword">
+		update user set
+		password=#{password}
+		where
+		phonenum=#{phonenum}
+	</update>
 </mapper>

@@ -61,4 +61,10 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByConditionAndPage(condition, page);
 	}
 
+	@Override
+	public int changePassword(String password, String phoneNum) {
+		// TODO Auto-generated method stub
+		return userDao.changePassword(password, phoneNum);
+	}
+
 }

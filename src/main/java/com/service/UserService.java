@@ -2,6 +2,8 @@ package com.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import com.model.Page;
 import com.model.User;
 import com.model.UserCondition;
@@ -22,4 +24,6 @@ public interface UserService {
 	public int getUserCountByCondition(UserCondition condition);
 
 	public List<User> getUserByConditionAndPage(UserCondition condition, Page page);
+	
+	public int changePassword(String password, String phoneNum);
 }

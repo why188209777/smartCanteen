@@ -87,4 +87,11 @@ public class UserController {
 		map.put("list", list);
 		return map;
 	}
+	
+	@RequestMapping(value = "changePassword")
+	@ResponseBody
+	public boolean changePassword(String password, String phoneNum) {
+		int changePassword = userService.changePassword(password, phoneNum);
+		return changePassword == 0 ? false : true;
+	}
 }
