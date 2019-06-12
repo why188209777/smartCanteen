@@ -85,4 +85,11 @@ public class MerchantController {
 		map.put("list", list);
 		return map;
 	}
+	
+	@RequestMapping(value = "login")
+	@ResponseBody
+	public Merchant login(String mname, String password) {
+		Merchant merchant = merchantService.login(mname, password);
+		return merchant;
+	}
 }

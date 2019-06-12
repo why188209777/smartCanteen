@@ -70,5 +70,12 @@ public class UserTest {
 		List<User> list = userDao.getUserByConditionAndPage(condition, page);
 		System.out.println(list);
 	}
+	
+	@Test
+	public void changePassword(){
+		String phoneNum = "18989471454";
+		int changePassword = userDao.changePassword("123456", phoneNum);
+		System.out.println(changePassword);
+	}
 
 }

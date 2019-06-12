@@ -3,22 +3,6 @@
  */
 $(function(){
 	var getCode;//验证码
-	$.ajax({
-		type: "post",
-		url: "http://localhost:8080/smartCanteen/food/getFoodByCanteenAndMerchant.do",
-		data: {
-			cid: cid,
-			mid: mid
-		},
-		dataType: "json",
-		success: function(data) {
-			getAllFoods(data);
-		},
-		error: function(error) {
-			console.log(error);
-		}
-	});
-	
 	
 	//获取验证码
 	$("#getCode").on("click",function(event){
@@ -65,15 +49,16 @@ $(function(){
 		
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/getSsm.do",
+			url:"http://localhost:8080/smartCanteen/user/changePassword.do",
 			data:{
-				number:phonenum,
+				password:upwd,
+				phoneNum:phonenum
 			},
 			dataType:"json",
 			success:function(data){	
 				console.log(data);
 				if(data==true){
-					alert("注册成功！(点击确定跳转到登录页面登录)");
+					alert("修改成功！(点击确定跳转到登录页面登录)");
 				}
 				window.location.href="login.html";//跳到登录
 			},

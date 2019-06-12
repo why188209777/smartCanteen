@@ -21,8 +21,6 @@ public class OrderTest {
 	@Autowired
 	private OrderService orderdao;
 	
-	private OrderDao orderdao1;
-
 	@Test
 	public void test(){
 		/*List<Order> allOrder = orderdao.getAllOrder();
@@ -67,8 +65,10 @@ public class OrderTest {
 		int pageSize = 5;
 		OrderCondition condition = new OrderCondition(null, null, 1, 1);
 		int count = orderdao.getOrderCountByCondition(condition);
-		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
-		Page page = new Page(1, pageSize, totalSize);
+		System.out.println(count);
+		/*int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		*/
+		Page page = new Page(1, pageSize, 1);
 		List<Order> list = orderdao.getOrderByConditionAndPage(condition, page);
 		System.out.println(list);
 	}

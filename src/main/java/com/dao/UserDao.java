@@ -27,4 +27,7 @@ public interface UserDao {
 	// 模糊和分页查询
 	public List<User> getUserByConditionAndPage(@Param("condition") UserCondition condition,
 			@Param("page") Page page);
+	
+	//修改密码
+	public int changePassword(@Param("password") String password, @Param("phonenum") String phoneNum);
 }

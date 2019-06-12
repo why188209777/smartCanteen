@@ -3,10 +3,28 @@ package com.model;
 public class Merchant {
 	private int mid;
 	private String mname;
+	private String password;
 	private String description;
 	private int cid;
 
 	public Merchant() {
+	}
+
+	public Merchant(int mid, String mname, String password, String description, int cid) {
+		super();
+		this.mid = mid;
+		this.mname = mname;
+		this.password = password;
+		this.description = description;
+		this.cid = cid;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public Merchant(int mid, String mname, String description, int cid) {
@@ -63,7 +81,8 @@ public class Merchant {
 
 	@Override
 	public String toString() {
-		return "Merchant [mid=" + mid + ", mname=" + mname + ", description=" + description + ", cid=" + cid + "]";
+		return "Merchant [mid=" + mid + ", mname=" + mname + ", password=" + password + ", description=" + description
+				+ ", cid=" + cid + "]";
 	}
 
 }

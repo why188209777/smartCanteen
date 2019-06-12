@@ -72,6 +72,7 @@ $(function(){
 		$("#WIDTRout_trade_no").val(orderID);
 	}
 	
+	//删除
 	$(document).on("click", ".removeCart", function(event) {
 		var thisParent=$(this).parent();
 		thisParent.slideUp();

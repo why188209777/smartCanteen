@@ -80,6 +80,8 @@ public class OrderController {
 		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
 		Page page = new Page(pageIndex, pageSize, totalSize);
 		List<Order> list = orderService.getOrderByConditionAndPage(condition, page);
+		System.out.println(page);
+		System.out.println(list);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);
 		map.put("list", list);
