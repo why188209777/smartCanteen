@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.alipay.api.internal.util.StringUtils;
 import com.model.Food;
 import com.model.FoodCondition;
+import com.model.FoodDynamic;
 import com.model.Page;
 import com.service.FoodService;
 
@@ -79,6 +80,17 @@ public class FoodController {
 		List<Food> list = foodService.getFoodByConditionAndPage(condition, page);
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("page", page);
+		map.put("list", list);
+		return map;
+	}
+	
+	//动态查询餐品
+	@RequestMapping(value = "getFoodByCanteenAndMerchant")
+	@ResponseBody
+	public Object getFoodByCanteenAndMerchant(int cid,int mid) {
+		FoodDynamic foodDynamic=new FoodDynamic(cid,mid);
+		List<Food> list = foodService.getFoodByCanteenAndMerchant(foodDynamic);
+		HashMap <String, Object> map = new HashMap<String, Object>();
 		map.put("list", list);
 		return map;
 	}

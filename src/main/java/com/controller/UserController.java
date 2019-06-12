@@ -7,6 +7,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alipay.api.internal.util.StringUtils;
@@ -23,9 +24,9 @@ public class UserController {
 
 	@RequestMapping(value = "addUser")
 	@ResponseBody
-	public boolean addUser(String uname, String idcard, String studentid, String classes, String password,
+	public boolean addUser(String uname,@RequestParam(required = false) String idcard, String studentid, String classes, String password,
 			String phonenum, String address) {
-		User user = new User(address, address, address, address, address, address, address);
+		User user = new User(uname, idcard, studentid, classes, password, phonenum, address);
 		int addUser = userService.addUser(user);
 		return addUser == 0 ? false : true;
 	}
@@ -86,5 +87,12 @@ public class UserController {
 		map.put("page", page);
 		map.put("list", list);
 		return map;
+	}
+	
+	@RequestMapping(value = "changePassword")
+	@ResponseBody
+	public boolean changePassword(String password, String phoneNum) {
+		int changePassword = userService.changePassword(password, phoneNum);
+		return changePassword == 0 ? false : true;
 	}
 }

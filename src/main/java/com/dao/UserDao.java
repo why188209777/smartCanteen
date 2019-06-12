@@ -20,11 +20,14 @@ public interface UserDao {
 
 	public List<User> getAllUser();
 
-	public User login(@Param("uname") String uname, @Param("password") String password);
+	public User login(@Param("name") String name, @Param("password") String password);
 
 	public int getUserCountByCondition(UserCondition condition);
 
 	// 模糊和分页查询
 	public List<User> getUserByConditionAndPage(@Param("condition") UserCondition condition,
 			@Param("page") Page page);
+	
+	//修改密码
+	public int changePassword(@Param("password") String password, @Param("phonenum") String phoneNum);
 }

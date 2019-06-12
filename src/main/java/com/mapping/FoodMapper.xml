@@ -59,4 +59,15 @@
 			</if>
 		</where>
 	</select>
+	<select id="getFoodByCanteenAndMerchant" resultType="Food">
+		SELECT foodid,fname,price,image,number,food.mid,mname,description,cid FROM food LEFT JOIN merchant ON food.mid = merchant.mid 
+		<where>
+			<if test="cid!=0">
+				cid=#{cid}
+			</if>
+			<if test="mid!=0">
+				and food.mid=#{mid}
+			</if>
+		</where>
+	</select>
 </mapper>

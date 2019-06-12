@@ -45,8 +45,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User login(String uname, String password) {
-		return userDao.login(uname, password);
+	public User login(String name, String password) {
+		return userDao.login(name, password);
 	}
 
 	@Override
@@ -59,6 +59,12 @@ public class UserServiceImpl implements UserService {
 	public List<User> getUserByConditionAndPage(UserCondition condition, Page page) {
 		// TODO Auto-generated method stub
 		return userDao.getUserByConditionAndPage(condition, page);
+	}
+
+	@Override
+	public int changePassword(String password, String phoneNum) {
+		// TODO Auto-generated method stub
+		return userDao.changePassword(password, phoneNum);
 	}
 
 }

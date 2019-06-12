@@ -54,14 +54,9 @@ public class UserTest {
 
 	@Test
 	public void loginTest() {
-		String sname;
-		String password;
-		Scanner scanner = new Scanner(System.in);
-		System.out.println("请输入id");
-		sname = scanner.next();
-		System.out.println("请输入密码");
-		password = scanner.next();
-		User user = userDao.login(sname, password);
+		String name = "赵旭尧";
+		String password = "4awaa42";
+		User user = userDao.login(name, password);
 		System.out.println(user);
 	}
 	
@@ -74,6 +69,13 @@ public class UserTest {
 		Page page = new Page(1, pageSize, totalSize);
 		List<User> list = userDao.getUserByConditionAndPage(condition, page);
 		System.out.println(list);
+	}
+	
+	@Test
+	public void changePassword(){
+		String phoneNum = "18989471454";
+		int changePassword = userDao.changePassword("123456", phoneNum);
+		System.out.println(changePassword);
 	}
 
 }

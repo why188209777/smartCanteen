@@ -3,8 +3,8 @@ package com.service;
 import java.util.List;
 
 import com.model.Food;
-import com.model.Order;
 import com.model.FoodCondition;
+import com.model.FoodDynamic;
 import com.model.Page;
 
 public interface FoodService {
@@ -23,4 +23,7 @@ public interface FoodService {
 	public int getFoodCountByCondition(FoodCondition condition);
 
 	public List<Food> getFoodByConditionAndPage(FoodCondition condition, Page page);
+	
+	//根据餐厅id和店铺id动态查询
+	public List<Food> getFoodByCanteenAndMerchant(FoodDynamic foodDynamic);
 }
