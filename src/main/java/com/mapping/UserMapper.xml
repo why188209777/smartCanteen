@@ -28,7 +28,7 @@
 	</select>
 
 	<select id="login" resultType="User"><!--用户登录 -->
-		select * from user where uname = #{name} or phonenum = #{name} and password=#{password}
+		select * from user where (uname = #{name} or phonenum = #{name}) and password=#{password}
 	</select>
 
 	<select id="getUserCountByCondition" resultType="Integer">
