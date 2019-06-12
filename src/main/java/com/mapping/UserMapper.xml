@@ -18,9 +18,14 @@
 		where studentid=#{studentid}
 	</update>
 
-	<select id="getUserByStudentId" parameterType="String"
+	<select id="getUserByStudentId" parameterType="User"
 		resultType="User"><!--按学号查找用户 -->
 		select * from user where studentid=#{studentid}
+	</select>
+
+	<select id="getUserByUserId" parameterType="User"
+		resultType="User"><!--按学号查找用户 -->
+		select * from user where id=#{id}
 	</select>
 
 	<select id="getAllUser" resultType="User"><!--得到所有用户 -->
@@ -28,8 +33,8 @@
 	</select>
 
 	<select id="login" resultType="User"><!--用户登录 -->
-		select * from user where (uname = #{name} or phonenum = #{name}) and password=#{password}
-		
+		select * from user where (uname = #{name} or phonenum) = #{name} and
+		password=#{password}
 	</select>
 
 	<select id="getUserCountByCondition" resultType="Integer">
