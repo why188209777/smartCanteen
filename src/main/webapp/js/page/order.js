@@ -2,54 +2,54 @@
  * 订单
  */
 
-$(function(){
+$(function() {
 	//初始化
 	//全局变量
-	var out_trade_no=GetQueryString("out_trade_no");//订单号
+	var out_trade_no = GetQueryString("out_trade_no"); //订单号
 	//获取当前时间
 	function getNowFormatDate() {
-        var date = new Date();
-        var seperator1 = "-";
-        var year = date.getFullYear();
-        var month = date.getMonth() + 1;
-        var strDate = date.getDate();
-        if (month >= 1 && month <= 9) {
-            month = "0" + month;
-        }
-        if (strDate >= 0 && strDate <= 9) {
-            strDate = "0" + strDate;
-        }
-        var currentdate = year + seperator1 + month + seperator1 + strDate;
-        return currentdate;
-    }
+		var date = new Date();
+		var seperator1 = "-";
+		var year = date.getFullYear();
+		var month = date.getMonth() + 1;
+		var strDate = date.getDate();
+		if(month >= 1 && month <= 9) {
+			month = "0" + month;
+		}
+		if(strDate >= 0 && strDate <= 9) {
+			strDate = "0" + strDate;
+		}
+		var currentdate = year + seperator1 + month + seperator1 + strDate;
+		return currentdate;
+	}
 
 	//获取地址栏参数
-	function GetQueryString(name)
-	{
-	     var reg = new RegExp("(^|&)"+ name +"=([^&]*)(&|$)");
-	     var r = window.location.search.substr(1).match(reg);
-	     if(r!=null)return  unescape(r[2]); return null;
+	function GetQueryString(name) {
+		var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+		var r = window.location.search.substr(1).match(reg);
+		if(r != null) return unescape(r[2]);
+		return null;
 	}
-	
-	if(out_trade_no==null){
-		return false;
-	}else{
-		var userid=sessionStorage.getItem("userid");//userid
-		var createtime=getNowFormatDate();//订单生成时间
-		var remark="暂无备注";//备注
-		var status=1;//订单状态
-		var total=sessionStorage.getItem("foodTotal");//总价
+
+	if(out_trade_no != null) {
+
+		var userid = sessionStorage.getItem("userid"); //userid
+		var createtime = getNowFormatDate(); //订单生成时间
+		var remark = "暂无备注"; //备注
+		var status = 1; //订单状态
+		var total = sessionStorage.getItem("foodTotal"); //总价
 		var mid;
-		var cart=JSON.parse(sessionStorage.getItem("cart"));
-		if(cart==null){
+		var cart = JSON.parse(sessionStorage.getItem("cart"));
+		if(cart == null) {
 			return false;
 		}
 		var item = cart.items;
 		$(item).each(function(index, value) {
-			if(index==0) {
-				mid=value.foodMid;
+			if(index == 0) {
+				mid = value.foodMid;
 			}
 		})
+
 		function addOrder() {
 			$.ajax({
 				type: "post",
@@ -57,16 +57,20 @@ $(function(){
 				data: {
 					orderid: out_trade_no,
 					createtime: createtime,
-					remark:remark,
-					status:status,
-					total:total,
-					userid:userid,
-					mid:mid
+					remark: remark,
+					status: status,
+					total: total,
+					userid: userid,
+					mid: mid
 				},
 				dataType: "json",
 				success: function(data) {
-					if(data==true){
-						console.log("添加订单成功！")
+					if(data == true) {
+						console.log("添加订单成功！");
+						//下单成功后删除session
+						sessionStorage.removeItem("cart");
+						sessionStorage.removeItem("foodTotal");
+
 					}
 				},
 				error: function(error) {
@@ -76,18 +80,18 @@ $(function(){
 		}
 		addOrder();
 	}
-	
-	function getOrderDetails(data){
+
+	function getOrderDetails(data) {
 		console.log(data);
-		var dom=$("#menu");
-		var str="";
-		if(data==null){
-			str=`
+		var dom = $("#menu");
+		var str = "";
+		if(data == null) {
+			str = `
 				<h1 style="text-align:center">暂无订单</h1>
 			`;
-		}else{
+		} else {
 			dom.html(" ");
-			for(var i=0;i<data.length;i++){
+			for(var i = 0; i < data.length; i++) {
 				var orderStatus;
 				/*if(data.[i].status==1){
 					orderStatus="已支付";
@@ -96,8 +100,8 @@ $(function(){
 				}else{
 					orderStatus="已取消";
 				}*/
-				orderStatus="已支付";
-				str+=`
+				orderStatus = "已支付";
+				str += `
 					<div class="orderContainer">
 						<div class="orderLeft">	
 							<img src="images/d1.jpg" class="orderImg"/>
@@ -119,12 +123,11 @@ $(function(){
 		}
 		dom.append(str);
 	};
-	
-	
-//	订单列表
-	function getOrderList(){
-		var userid=sessionStorage.getItem("userid");
-		if(userid!=null){
+
+	//	订单列表
+	function getOrderList() {
+		var userid = sessionStorage.getItem("userid");
+		if(userid != null) {
 			$.ajax({
 				type: "post",
 				url: "order/getOrderByUserId.do",
@@ -133,22 +136,19 @@ $(function(){
 				},
 				dataType: "json",
 				success: function(data) {
-					if(data!=null){
+					if(data != null) {
+						console.log(data);
 						getOrderDetails(data);
-						//下单成功后删除session
-						sessionStorage.removeItem("cart");
-						sessionStorage.removeItem("foodTotal");
 					}
 				},
 				error: function(error) {
 					console.log(error);
 				}
 			});
-		}else{
-			console.log("无userid");
+		} else {
 			getOrderDetails(data);
 		}
-		
+
 	}
 	getOrderList();
 })
