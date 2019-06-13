@@ -4,51 +4,77 @@
  */
 $(function(){
 	
-	
-//	初始化
+	//	初始化
 	function getInit(){
+		var userid=sessionStorage.getItem("userid");
 		var user=sessionStorage.getItem("user");
 		var upwd=sessionStorage.getItem("upwd");
 		if(user!=null){
 			$("#loginUser").text(user);
-			var dom=$(".account_grid");
-			dom.html("");
-			var str="";
-			str+=`
-			<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
-				<div class="register-top-grid">
-					<h2>个人信息</h2>
-					<div class="wow fadeInLeft" data-wow-delay="0.4s">
-						<span>用户名<label>*</label></span>
-						<input type="text" id="userName">
-					</div>
-					<div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span>班级<label>*</label></span>
-						<input type="text" id="userClass">
-					</div>
-					<div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span>学号<label>*</label></span>
-						<input type="text" id="UserStuID">
-					</div>
-					<div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span>地址<label>*</label></span>
-						<input type="text" id="userAddress">
-					</div>
-					<div class="wow fadeInRight" data-wow-delay="0.4s">
-						<span>手机<label>*</label></span>
-						<input type="text" id="phonenum">
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			`;
-			dom.append(str);
+			getUserInfo(userid);
 		}
 	}
-	getInit();
 	
 	
-//	存储
+	
+	function getUserInfo(userid){
+		$.ajax({
+			type:"post",
+			url:"http://localhost:8080/smartCanteen/user/getUserByUserId.do",
+			data:{
+				id:userid,
+			},
+			dataType:"json",
+			success:function(data){	
+				if(data!=null){
+					fillUserInfo(data);
+				}
+			},
+			error:function(error){
+				console.log(error);
+			}
+		});
+	}	
+	
+	
+//	填充个人信息
+	function fillUserInfo(data){
+		var dom=$(".account_grid");
+		dom.html("");
+		var str="";
+		str+=`
+		<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
+			<div class="register-top-grid">
+				<h2>个人信息</h2>
+				<div class="wow fadeInLeft" data-wow-delay="0.4s">
+					<span>用户名<label>*</label></span>
+					<input type="text" id="userName" value="${data.uname}" disabled="disabled">
+				</div>
+				<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>班级<label>*</label></span>
+					<input type="text" id="userClass" value="${data.class}" disabled="disabled">
+				</div>
+				<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>学号<label>*</label></span>
+					<input type="text" id="UserStuID" value="${data.studentid}" disabled="disabled">
+				</div>
+				<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>地址<label>*</label></span>
+					<input type="text" id="userAddress" value="${data.address}" disabled="disabled">
+				</div>
+				<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>手机<label>*</label></span>
+					<input type="text" id="phonenum" value="${data.phonenum}" disabled="disabled">
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		`;
+		dom.append(str);
+	}
+	
+	
+//	登录并存储
 	function loginUser(){
 		var user=$("#loginName").val();
 		var upwd=$("#loginPwd").val();
@@ -62,7 +88,6 @@ $(function(){
 			dataType:"json",
 			success:function(data){	
 				console.log(data);
-				console.log(data.password);
 				if(data!=null){
 					alert("登录成功");
 					//session存储
@@ -73,6 +98,7 @@ $(function(){
 				}
 			},
 			error:function(error){
+				console.log(error);
 				$("#loginTip").css({
 					visibility:'visible',//显示提示文字
 				});
@@ -87,4 +113,6 @@ $(function(){
 		console.log("login");
 		loginUser();
 	});
+	
+	getInit();
 });
