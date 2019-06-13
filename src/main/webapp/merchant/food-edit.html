@@ -111,7 +111,7 @@
 			id = url.substr(4);
 			$.ajax({
 				type: "POST",
-				url: "food/getFoodByFoodId.do",
+				url: "../food/getFoodByFoodId.do",
 				data: {
 					foodId: id
 				},
@@ -149,7 +149,7 @@
 			//选完文件后不自动上传
 			upload.render({
 				elem: '#chooseImg',
-				url: 'img/upload.do',
+				url: '../img/upload.do',
 				auto: false,
 				size: 500,
 				before: function(obj) {
@@ -170,7 +170,7 @@
 					var mid = $("input[name=mid]").val();
 					$.ajax({
 						type: "POST",
-						url: "food/updateFood.do",
+						url: "../food/updateFood.do",
 						data: {
 							foodId: id,
 							fname: fname,

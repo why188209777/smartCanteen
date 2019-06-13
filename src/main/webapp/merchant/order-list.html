@@ -130,7 +130,7 @@
 			var status = $('#status option:selected').val();
 			$.ajax({
 				type: "POST",
-				url: "order/getOrderByConditionAndPage.do",
+				url: "../order/getOrderByConditionAndPage.do",
 				data: {
 					startTime: start,
 					endTime: end,
@@ -170,7 +170,7 @@
 						html += `<td>${total}</td>`;
 						$.ajax({
 							type: "POST",
-							url: "user/getUserByUserId.do",
+							url: "../user/getUserByUserId.do",
 							data: {
 								id: userid
 							},

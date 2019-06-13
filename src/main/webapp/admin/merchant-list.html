@@ -98,7 +98,7 @@
 			layer.confirm('确认要删除吗？', function(index) {
 				$.ajax({
 					type: "POST",
-					url: "merchant/delMerchant.do",
+					url: "../merchant/delMerchant.do",
 					data: {
 						mid: id
 					},
@@ -134,7 +134,7 @@
 			var mname = $("input[name=merchantName]").val();
 			$.ajax({
 				type: "POST",
-				url: "merchant/getMerchantByConditionAndPage.do",
+				url: "../merchant/getMerchantByConditionAndPage.do",
 				data: {
 					mname:mname,
 					cid:$('#category option:selected') .val(),
@@ -192,7 +192,7 @@
 		function initCategory(){
 			$.ajax({
 				type: "POST",
-				url: "canteen/getAllCanteen.do",
+				url: "../canteen/getAllCanteen.do",
 				dataType: "json",
 				success: function(data) {
 					console.log(data);

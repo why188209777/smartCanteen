@@ -106,7 +106,7 @@
 			id = url.substr(4);
 			$.ajax({
 				type:"POST",
-				url:"merchant/getMerchantByMid.do",
+				url:"../merchant/getMerchantByMid.do",
 				data:{
 					mid:id
 				},
@@ -131,7 +131,7 @@
 			var mid = $("input[name=mid]").val();
 			$.ajax({
 				type: "POST",
-				url: "merchant/updateMerchant.do",
+				url: "../merchant/updateMerchant.do",
 				data: {
 					mid:mid,
 					mname: mname,

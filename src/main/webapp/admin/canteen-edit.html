@@ -100,7 +100,7 @@
 			id = url.substr(4);
 			$.ajax({
 				type:"POST",
-				url:"canteen/getCanteenByCid.do",
+				url:"../canteen/getCanteenByCid.do",
 				data:{
 					cid:id
 				},
@@ -123,7 +123,7 @@
 			var description = $("input[name=description]").val();
 			$.ajax({
 				type: "POST",
-				url: "canteen/updateCanteen.do",
+				url: "../canteen/updateCanteen.do",
 				data: {
 					cid:id,
 					cname: cname,

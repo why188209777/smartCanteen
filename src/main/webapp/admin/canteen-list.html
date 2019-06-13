@@ -83,7 +83,7 @@
 			layer.confirm('确认要删除吗？', function(index) {
 				$.ajax({
 					type: "POST",
-					url: "canteen/delCanteen.do",
+					url: "../canteen/delCanteen.do",
 					data: {
 						cid: id
 					},
@@ -111,7 +111,7 @@
 			var pageSize = 5;
 			$.ajax({
 				type: "POST",
-				url: "canteen/getCanteenByPage.do",
+				url: "../canteen/getCanteenByPage.do",
 				data: {
 					pageIndex: pageIndex,
 					pageSize: pageSize

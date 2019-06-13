@@ -92,7 +92,7 @@
 			console.log($('#category option:selected') .val());
 			$.ajax({
 				type: "POST",
-				url: "user/getCertificationUser.do",
+				url: "../user/getCertificationUser.do",
 				data:{
 					status:$('#category option:selected') .val(),
 					pageIndex: pageIndex,
@@ -213,7 +213,7 @@
 		function pass(id){
 			$.ajax({
 				type: "POST",
-				url: "user/dealCertification.do",
+				url: "../user/dealCertification.do",
 				data:{
 					id:id,
 					status:1
@@ -246,7 +246,7 @@
 		function reject(id){
 			$.ajax({
 				type: "POST",
-				url: "user/dealCertification.do",
+				url: "../user/dealCertification.do",
 				data:{
 					id:id,
 					status:3

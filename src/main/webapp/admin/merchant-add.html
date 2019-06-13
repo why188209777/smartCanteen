@@ -78,7 +78,7 @@
 			var cid = $('#category option:selected').val();
 			$.ajax({
 				type: "POST",
-				url: "merchant/addMerchant.do",
+				url: "../merchant/addMerchant.do",
 				data: {
 					mname: mname,
 					description: description,
@@ -130,7 +130,7 @@
 		function initCategory() {
 			$.ajax({
 				type: "POST",
-				url: "smartCanteen/canteen/getAllCanteen.do",
+				url: "../smartCanteen/canteen/getAllCanteen.do",
 				dataType: "json",
 				success: function(data) {
 					console.log(data);

@@ -96,7 +96,7 @@
 				console.log(fid);
 				$.ajax({
 					type: "POST",
-					url: "/food/delFood.do",
+					url: "../food/delFood.do",
 					data: {
 						foodId:fid
 					},
@@ -130,7 +130,7 @@
 			var fname = $("input[name=fname]").val();
 			$.ajax({
 				type: "POST",
-				url: "/food/getFoodByConditionAndPage.do",
+				url: "../food/getFoodByConditionAndPage.do",
 				data: {
 					fname:fname,
 					mid:mid,

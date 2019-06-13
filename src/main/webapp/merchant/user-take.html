@@ -42,7 +42,7 @@
 			var orderid = $("input[name=orderid]").val();
 			$.ajax({
 				type: "POST",
-				url: "order/getOrderByOrderId.do",
+				url: "../order/getOrderByOrderId.do",
 				data: {
 					orderid:orderid	
 				},
@@ -59,7 +59,7 @@
 			if(storage["t"]==1){
 			$.ajax({
 				type: "POST",
-				url: "item/getItemByOrderId.do",
+				url: "../item/getItemByOrderId.do",
 				data: {
 					orderId:orderid
 				},
@@ -75,7 +75,7 @@
 			
 			$.ajax({
 				type: "POST",
-				url: "order/updateOrderStatus.do",
+				url: "../order/updateOrderStatus.do",
 				data: {
 					orderid:orderid,
 					status:3
