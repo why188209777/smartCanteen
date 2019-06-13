@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+	<head>
+		<meta charset="UTF-8">
+		<title>欢迎页面-X-admin2.2</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+		<link rel="stylesheet" href="./css/font.css">
+		<link rel="stylesheet" href="./css/xadmin.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script src="./lib/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/xadmin.js"></script>
+		<script type="text/javascript" src=""></script>
+		<!-- 让IE8/9支持媒体查询，从而兼容栅格 -->
+		<!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<body>
+		<div class="layui-fluid">
+			<div class="layui-row layui-col-space15">
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-body ">
+							<blockquote class="layui-elem-quote">欢迎您：
+								<span class="x-red" id="mname2">test</span>！当前时间:<span id="time">2018-04-25 20:50:53</span>
+							</blockquote>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-header">数据统计</div>
+						<div class="layui-card-body ">
+							<ul class="layui-row layui-col-space10 layui-this x-admin-carousel x-admin-backlog">
+								<li class="layui-col-md2 layui-col-xs6">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>总销售额</h3>
+										<p>
+											<cite class="sum">66</cite></p>
+									</a>
+								</li>
+								<li class="layui-col-md2 layui-col-xs6">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>总订单数</h3>
+										<p>
+											<cite class="num">12</cite></p>
+									</a>
+								</li>
+								<li class="layui-col-md2 layui-col-xs6">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>总餐品数</h3>
+										<p>
+											<cite class="cnum">99</cite></p>
+									</a>
+								</li>
+								<li class="layui-col-md2 layui-col-xs6">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>商品数</h3>
+										<p>
+											<cite>67</cite></p>
+									</a>
+								</li>
+								<li class="layui-col-md2 layui-col-xs6">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>文章数</h3>
+										<p>
+											<cite>67</cite></p>
+									</a>
+								</li>
+								<li class="layui-col-md2 layui-col-xs6 ">
+									<a href="javascript:;" class="x-admin-backlog-body">
+										<h3>文章数</h3>
+										<p>
+											<cite>6766</cite></p>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="layui-col-md12">
+					<div class="layui-card">
+						<div class="layui-card-header">商家信息</div>
+						<div class="layui-card-body ">
+							<table class="layui-table">
+								<tbody>
+									<tr>
+										<th>商家ID：</th>
+										<td><span id="mid"></span><br /></td>
+									</tr>
+									<tr>
+										<th>商家名称：</th>
+										<td><span id="mname"></span><br /></td>
+									</tr>
+									<tr>
+										<th>商家描述：</th>
+										<td><span id="description"></span><br /></td>
+									</tr>
+									<tr>
+										<th>所属食堂：</th>
+										<td><span id="cid"></span><br /></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+	</body>
+	<script type="text/javascript">
+		$(function() { // 初始化内容
+			$("#mname2").text(sessionStorage.getItem('mname'));
+			var date = new Date().toLocaleString();
+			console.log(date);
+			$("#time").text(date);
+
+			var mid = sessionStorage.getItem('mid');
+			$.ajax({
+				type: "POST",
+				url: "order/getOrderByMid.do",
+				data: {
+					mid: mid
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					var sum = 0;
+					var num = 0;
+					$(data).each(function(index, order) {
+						var total = order.total;
+						sum += total;
+						num += 1;
+						console.log(sum);
+						console.log(num)
+						$(".sum").html(sum);
+						$(".num").html(num);
+					})
+
+				},
+				error: function(data) {
+					console.log(data)
+				}
+			})
+
+			$.ajax({
+				type: "POST",
+				url: "food/getFoodByMid.do",
+				data: {
+					mid:mid,
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					var cnum = 0;
+					$(data).each(function(index, order) {
+						cnum += 1;
+						console.log(cnum)
+						$(".cnum").html(cnum);
+					})
+
+				},
+				error: function(data) {
+					console.log(data)
+				}
+			})
+		});
+	</script>
+	<script>
+		$(function() { // 初始化内容
+			var mid = sessionStorage.getItem('mid');
+			$.ajax({
+				type: "POST",
+				url: "merchant/getMerchantByMid.do",
+				data: {
+					mid: mid,
+				},
+				dataType: "json",
+				success: function(data) {
+					console.log(data);
+					$("#mid").text(data.mid);
+					$("#mname").text(data.mname);
+					$("#description").text(data.description);
+					$.ajax({
+						type: "POST",
+						url: "canteen/getCanteenByCid.do",
+						data: {
+							cid: data.cid,
+						},
+						success: function(data) {
+							console.log(data);
+							$("#cid").text(data.cname);
+						},
+						error: function(data) {
+							console.log(data);
+						}
+					});
+				},
+				error: function(data) {
+					console.log(data);
+				},
+			});
+		});
+	</script>
+</html>
