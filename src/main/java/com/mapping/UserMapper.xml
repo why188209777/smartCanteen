@@ -51,7 +51,7 @@
 				and studentid like '%${studentid}%'
 			</if>
 			<if test="classes!=null">
-				and classes like '%${classes}%'
+				and class like '%${classes}%'
 			</if>
 			<if test="phonenum!=null">
 				and phonenum like '%${phonenum}%'
