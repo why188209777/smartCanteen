@@ -95,7 +95,7 @@ $(function() {
 		for(let i = 0; i < data.list.length; i++) {
 			str += `
 				<div class="col-md-4 menu-grid1 simpleCart_shelfItem">
-					<img src="images/foodimg/${data.list[i].image}.jpg" class="img-responsive" style="width: 350px;height: 350px;"/>
+					<img src="images/foodimg/${data.list[i].image}.jpg" class="img-responsive foodImg"/>
 					<div class="cur">
 						<div class="cur-left">
 							<div>
@@ -110,11 +110,9 @@ $(function() {
 							<div>
 								<span class="item_price">
 									<h6>
-									<span style="display:none">${data.list[i].image}</span>
-									<span class="foodName" style="margin-right: 30px;">${data.list[i].fname}</span>
+									<span class="foodName" style="margin-right: 80px;">${data.list[i].fname}</span>
 									<span class="foodPrice" style="margin-right: 20px;">￥${data.list[i].price}</span>
 									<span class="foodNum" style="display:none">剩余:${data.list[i].number}份</span>
-						
 									</h6>
 								</span>
 							</div>

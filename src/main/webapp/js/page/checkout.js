@@ -87,6 +87,7 @@ $(function(){
 	$(document).on("click", ".removeCart", function(event) {
 		var thisParent=$(this).parent();
 		thisParent.slideUp();
+		thisParent.remove();
 		var foodName=$(this).attr("data-foodName");
 		$(item).each(function(index,value){
 			if(value.foodName==foodName){
@@ -95,6 +96,7 @@ $(function(){
 				//若删除则购物车数量相应变化
 				$("#cartNum").text(eval(cartNum-1));
 				var foodPrices=$(".foodPrice");
+				console.log(foodPrices.length);
 				var foodNums=$(".foodNum");
 				var sum=0;
 				var count=0;
@@ -102,7 +104,9 @@ $(function(){
 					count+=foodNums[i].innerText*1;
 					sum+=foodPrices[i].innerText*foodNums[i].innerText;
 				}
-				
+				console.log("数量："+count+"总价："+sum);
+				$(".foodTotalPrice").val(sum);
+				$(".foodTotalNum").val(count);
 				//session中相应也同步变化，存入同键自动替换
 				sessionStorage.setItem("foodTotal",sum);
 				

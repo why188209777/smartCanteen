@@ -75,4 +75,17 @@ $(function(){
 	$("#cartImg").on("mouseout",function(){
 		$(this).attr("src","images/cart.png");
 	})
+	
+	
+	//登出
+	$("#loginout").on("click",function(event){
+		event.preventDefault();
+		sessionStorage.removeItem("userid");
+		sessionStorage.removeItem("user");
+		sessionStorage.removeItem("upwd");
+		sessionStorage.removeItem("cart");
+		sessionStorage.removeItem("foodTotal");
+		window.location.href="login.html";
+	});
 })
+
