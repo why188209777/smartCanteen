@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title>Login</title>
+		<title>Menu</title>
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,63 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 		<!---End-smoth-scrolling---->
-
+		<!-- cart -->
+		<script src="js/simpleCart.min.js">
+		</script>
+		<!-- cart -->
+		<style type="text/css">
+			.orderContainer{
+				box-sizing: border-box;
+				width: 100%;
+				height: 200px;
+				border-bottom: 1px solid #CCCCCC;
+				padding: 10PX;
+				box-shadow:0px 0px 5px #888888 ;
+				margin-bottom: 10px;
+			}
+			.orderContainer .orderLeft{
+				float: left;
+				width: 30%;
+				text-align: center;
+			}
+			.orderContainer .orderRight{
+				float: left;
+				width: 70%;
+			}
+			.orderContainer .orderRight p{
+				margin-bottom: 10px;
+				font-size: 16px;
+			}
+			.orderContainer .orderRight p:last-child{
+				margin:0;
+			}
+			.orderContainer .orderRight .orderA{
+				float: right;
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				background: #FAEBCC;
+				margin-right: 30px;
+				line-height: 30px;
+				text-align: center;
+				color: #FFFFFF;
+				cursor: pointer;
+				text-decoration: none;
+			}
+			.orderContainer .orderRight .orderA:hover{
+				background: #F0AD4E;
+			}
+			.orderImg{
+				width: 150px;
+				height: 150px;
+				transition: width 1s, height 1s;
+				transition-timing-function:ease
+			}
+			.orderImg:hover{
+				width: 160px;
+				height: 160px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -53,19 +109,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</div>
 					<div class="logo">
-						<h1><a href="index.html">canteen</a></h1>
+						<h1><a href="index.html">Canteen</a></h1>
 					</div>
 					<div class="header-right">
 						<div class="login">
 							<a href="login.html" id="loginUser">login</a>
 						</div>
 						<div class="cart box_1">
-							<a href="checkout.html">
-								<h3> <span class="simpleCart_total"> ￥0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="images/bag.png" alt=""></h3>
+							<a href="checkout.html" style="display: inline-block;float: right;width: 40px;height: 40px;margin-top:-0.5em">
+								<img src="images/cart.png" alt="cart" id="cartImg" style="width: 40px;height: 40px;"/>
 							</a>
-							<p>
-								<a href="javascript:;" class="simpleCart_empty">Empty cart</a>
-							</p>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -91,14 +144,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="menu.html">menus</a>
 						</li>
 						<li>
-							<a href="gallery.html">gallery</a>
-						</li>
-						<li>
-							<a href="events.html">events</a>
+							<a href="order.html" class="active">order</a>
 						</li>
 						<li>
 							<a href="contact.html">contact</a>
 						</li>
+						
 					</ul>
 					<!-- script for menu -->
 
@@ -112,45 +163,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<!--end-banner-->
-	
-		<!--contact-->
 		<div class="content">
-			<div class="main-1">
+			<div class="menu-section">
 				<div class="container">
-					<div class="login-page">
-						<div class="account_grid">
-							<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
-								<h3>新客户</h3>
-								<p>通过创建与我们的商店的帐户，你就可以在结帐过程更快地移动，存储多个送货地址，查看和跟踪您的帐户和更多的订单。</p>
-								<a class="acount-btn" href="account.html">创建一个帐户</a>
-							</div>
-							<div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
-								<h3>注册客户</h3>
-								<p>如果你有我们的帐户，请登录。.</p>
-								<form>
-									<div>
-										<span>用户名/手机号<label>*</label></span>
-										<input type="text" id="loginName">
-									</div>
-									<div>
-										<span>密码<label>*</label></span>
-										<input type="password" id="loginPwd">
-									</div>
-									<span style="visibility:hidden;color: red;" id="loginTip">用户或密码错误！</span>
-									<a class="forgot" href="forgetPassword.html">忘记密码?</a>
-									<input type="button" value="登录" id="login">
-									
-								</form>
-							</div>
-							<div class="clearfix"> </div>
+					<h3> order list</h3>
+					<div class="menu-grids wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+						<div class="menu1" id="menu">
 							
 						</div>
-							
+						<div class="clearfix"></div>
+					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-			<!-- login -->
 			<div class="specials-section">
 				<div class="container">
 					<div class="col-md-3 specials">
@@ -216,20 +240,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="footer-top">
 					<p>Copyright &copy; 2015.Company name All rights reserved.
-						<a target="_blank" href="http://sc.chinaz.com/moban/">智能食堂</a>
+						<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a>
 					</p>
 				</div>
 				<script type="text/javascript">
 					$(document).ready(function() {
-						/*
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear' 
-					 		};
-							*/
-
 						$().UItoTop({
 							easingType: 'easeOutQuart'
 						});
@@ -242,5 +257,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 	</body>
-	<script src="js/page/login.js"></script>
+	<script src="js/common/common.js"></script>
+	<script src="js/page/order.js"></script>
+
 </html>

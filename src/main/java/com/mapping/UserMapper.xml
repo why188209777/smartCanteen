@@ -33,7 +33,7 @@
 	</select>
 
 	<select id="login" resultType="User"><!--用户登录 -->
-		select * from user where (uname = #{name} or phonenum) = #{name} and
+		select * from user where (uname = #{name} or phonenum = #{name}) and
 		password=#{password}
 	</select>
 
@@ -51,7 +51,7 @@
 				and studentid like '%${studentid}%'
 			</if>
 			<if test="classes!=null">
-				and classes like '%${classes}%'
+				and class like '%${classes}%'
 			</if>
 			<if test="phonenum!=null">
 				and phonenum like '%${phonenum}%'
@@ -76,7 +76,7 @@
 				and studentid like '%${condition.studentid}%'
 			</if>
 			<if test="condition.classes!=null">
-				and classes like '%${condition.classes}%'
+				and class like '%${condition.classes}%'
 			</if>
 			<if test="condition.phonenum!=null">
 				and phonenum like '%${condition.phonenum}%'
@@ -95,5 +95,39 @@
 		password=#{password}
 		where
 		phonenum=#{phonenum}
+	</update>
+	
+	<select id="getCertificationUserCount" parameterType="Integer" resultType="Integer">
+		select count(*) from user
+		<where>
+			1 = 1
+			<if test="status == 0 or status == 1 or status == 2 or status == 3">
+				and status = #{status}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 因为数据库0-3都代表不同状态，那么只要是大于3就代表没有加入筛选条件 -->
+	<select id="getCertificationUser" resultType="User">
+		select * from user
+		<where>
+			1 = 1
+			<if test="status == 0 or status == 1 or status == 2 or status == 3">
+				and status = #{status}
+			</if>
+			<if test="page.pageSize!=0">
+				limit #{page.first},#{page.pageSize}
+			</if>
+		</where>
+	</select>
+	
+	<!-- 申请认证，状态为2 -->
+	<update id="applyCertification">
+		update user set status = 2 where id = #{id}
+	</update>
+	
+	<!-- 处理认证 ,1代表通过认证，3代表拒绝认证-->
+	<update id="dealCertification">
+		update user set status = #{status} where id = #{id}
 	</update>
 </mapper>

@@ -66,10 +66,21 @@ $(function(){
 			count+=foodNums[i].innerText*1;
 			sum+=foodPrices[i].innerText*foodNums[i].innerText;
 		}
+		//将食物总价存入session
+		sessionStorage.setItem("foodTotal",sum);
 		$(".foodTotalPrice").val(sum);
 		$(".foodTotalNum").val(count);
-		var orderID=Number(Math.random().toString().substr(3,6) + Date.now()).toString(36);
-		$("#WIDTRout_trade_no").val(orderID);
+		//生成唯一订单号
+		var vNow = new Date();
+		var sNow = "";
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+		document.getElementById("WIDout_trade_no").value =  sNow;
 	}
 	
 	//删除
@@ -80,9 +91,21 @@ $(function(){
 		$(item).each(function(index,value){
 			if(value.foodName==foodName){
 				item.splice(index,1);
-				console.log("session删除成功!");
 				var cartNum=$("#cartNum").text();
+				//若删除则购物车数量相应变化
 				$("#cartNum").text(eval(cartNum-1));
+				var foodPrices=$(".foodPrice");
+				var foodNums=$(".foodNum");
+				var sum=0;
+				var count=0;
+				for (var i=0;i<foodPrices.length;i++) {
+					count+=foodNums[i].innerText*1;
+					sum+=foodPrices[i].innerText*foodNums[i].innerText;
+				}
+				
+				//session中相应也同步变化，存入同键自动替换
+				sessionStorage.setItem("foodTotal",sum);
+				
 				var cart = {};
 				cart.items=item;
 				var jsonStr = JSON.stringify(cart); //转换为json字符串
@@ -90,12 +113,6 @@ $(function(){
 				
 			}
 		})
-	});
-	$(document).on("click", ".payBtn", function(event) {
-		console.log("开始支付");
-		var orderID=Number(Math.random().toString().substr(3,6) + Date.now()).toString(36);
-		var foodTotalPrice=$(".foodTotalPrice").text();//金额
-		WIDTRout_trade_no
 	});
 	
 		

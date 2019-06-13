@@ -2,7 +2,7 @@
 <html>
 
 	<head>
-		<title>Login</title>
+		<title>Menu</title>
 		<link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all">
 		<link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
 		<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -36,7 +36,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 		<!---End-smoth-scrolling---->
-
+		<!-- cart -->
+		<script src="js/simpleCart.min.js">
+		</script>
+		<!-- cart -->
 	</head>
 
 	<body>
@@ -53,19 +56,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</ul>
 					</div>
 					<div class="logo">
-						<h1><a href="index.html">canteen</a></h1>
+						<h1><a href="index.html">Canteen</a></h1>
 					</div>
 					<div class="header-right">
 						<div class="login">
-							<a href="login.html">login</a>
+							<a href="login.html" id="loginUser">login</a>
 						</div>
 						<div class="cart box_1">
-							<a href="checkout.html">
-								<h3> <span class="simpleCart_total"> ￥0.00 </span> (<span id="simpleCart_quantity" class="simpleCart_quantity"> 0 </span> items)<img src="images/bag.png" alt=""></h3>
+							<a href="checkout.html" style="display: inline-block;float: right;width: 40px;height: 40px;margin-top:-0.5em">
+								<img src="images/cart.png" alt="cart" id="cartImg" style="width: 40px; height: 40px;"/>
 							</a>
-							<p>
-								<a href="javascript:;" class="simpleCart_empty">Empty cart</a>
-							</p>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -88,14 +88,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="about.html">about</a>
 						</li>
 						<li>
-							<a href="menu.html">menus</a>
+							<a href="menu.html" class="active">menus</a>
 						</li>
 						<li>
+							<a href="order.html" class="active">order</a>
+						</li>
+						<!--<li>
 							<a href="gallery.html">gallery</a>
 						</li>
 						<li>
 							<a href="events.html">events</a>
-						</li>
+						</li>-->
 						<li>
 							<a href="contact.html">contact</a>
 						</li>
@@ -112,45 +115,45 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<!--end-banner-->
-	
-		<!--contact-->
-		<div class="content">
-			<div class="main-1">
-				<div class="container">
-					<div class="login-page">
-						<div class="account_grid">
-							<div class="col-md-6 login-right wow fadeInRight" data-wow-delay="0.4s">
-								<h3>忘记密码</h3>
-								<p>重新设置密码</p>
-								<form>
-									<div>
-										<span>密码<label>*</label></span>
-										<input type="password" id="upwd">
-									</div>
-									<div>
-										<span>确认密码<label>*</label></span>
-										<input type="password" id="reupwd">
-									</div>
-									<div>
-										<span>手机号<label>*</label></span>
-										<input type="text" id="phonenum">
-									</div>
-									<div>
-										<span>验证码<label>*</label></span>
-										<div style="width: 96%;border: 1px solid #555;margin: 0; padding:0;">
-											<input type="text" placeholder="验证码" style="width: 80%; border: none;outline-color:rgba(0,0,0,0);" id="code">
-											<a style="color: #41ac52;text-decoration: none;" id="getCode" style="cursor: pointer;">获取验证码</a>
-										</div>
-									</div>
-									<input type="submit" value="确认修改" id="modifyPwd">
-								</form>
-							</div>
-							<div class="clearfix"> </div> </div>
+		<div class="banner-bottom">
+			<div class="container">
+				<div class="droop-down">
+					<div class="col-md-4 droop">
+						<div class="sort-by">
+							<label>餐厅：</label>
+							<select id=canteenList>
+								<!--餐厅列表-->
+							</select>
 						</div>
+					</div>
+					<div class="col-md-4 droop">
+						<div class="sort-by">
+							<label>店铺：</label>
+							<select id="storeList">
+								<!--店铺列表-->
+							</select>
+						</div>
+					</div>
+					<div class="col-md-4 search">
+						<form style="text-align: center;">
+							<input type="submit" value="搜索" id="searchFood">
+						</form>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<div class="menu-section">
+				<div class="container">
+					<h3> food menu</h3>
+					<div class="menu-grids wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
+						<div class="menu1" id="menu">
+						</div>
+						<div class="clearfix"></div>
 					</div>
 				</div>
 			</div>
-			<!-- login -->
 			<div class="specials-section">
 				<div class="container">
 					<div class="col-md-3 specials">
@@ -222,13 +225,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<script type="text/javascript">
 					$(document).ready(function() {
 						/*
-							var defaults = {
-					  			containerID: 'toTop', // fading element id
-								containerHoverID: 'toTopHover', // fading element hover id
-								scrollSpeed: 1200,
-								easingType: 'linear' 
-					 		};
-							*/
+									var defaults = {
+							  			containerID: 'toTop', // fading element id
+										containerHoverID: 'toTopHover', // fading element hover id
+										scrollSpeed: 1200,
+										easingType: 'linear' 
+							 		};
+									*/
 
 						$().UItoTop({
 							easingType: 'easeOutQuart'
@@ -242,5 +245,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		</div>
 
 	</body>
-	<script src="js/page/forgetPassword.js"></script>
+	<script src="js/common/common.js"></script>
+	<script src="js/page/menu.js"></script>
+
 </html>
