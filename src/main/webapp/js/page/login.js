@@ -20,7 +20,7 @@ $(function(){
 	function getUserInfo(userid){
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/getUserByUserId.do",
+			url:"user/getUserByUserId.do",
 			data:{
 				id:userid,
 			},
@@ -42,6 +42,17 @@ $(function(){
 		var dom=$(".account_grid");
 		dom.html("");
 		var str="";
+		var authState;
+		if(data.status==0){
+			authState="未认证";
+		}else if(data.status==1){
+			authState="已认证";
+		}else if(data.status==2){
+			authState="认证中";
+		}else if(data.status==3){
+			authState="认证失败";
+		}
+		
 		str+=`
 		<div class="col-md-6 login-left wow fadeInLeft" data-wow-delay="0.4s">
 			<div class="register-top-grid">
@@ -52,7 +63,7 @@ $(function(){
 				</div>
 				<div class="wow fadeInRight" data-wow-delay="0.4s">
 					<span>班级<label>*</label></span>
-					<input type="text" id="userClass" value="${data.class}" disabled="disabled">
+					<input type="text" id="userClass" value="${data.classes}" disabled="disabled">
 				</div>
 				<div class="wow fadeInRight" data-wow-delay="0.4s">
 					<span>学号<label>*</label></span>
@@ -66,10 +77,23 @@ $(function(){
 					<span>手机<label>*</label></span>
 					<input type="text" id="phonenum" value="${data.phonenum}" disabled="disabled">
 				</div>
-				<div class="clearfix"></div>
+				<div class="wow fadeInRight" data-wow-delay="0.4s">
+					<span>认证<label>*</label></span>
+					<input type="text" id="phonenum" value="${authState}" disabled="disabled">
+			`;
+			if(data.status==0){
+				authState="未认证";
+				str+=`
+					<a id="getAuth" style="cursor: pointer;">点击认证</a>
+				`;
+			}
+			str+=`
+				</div>
 			</div>
 		</div>
-		`;
+			`
+			;
+		
 		dom.append(str);
 	}
 	
@@ -80,7 +104,7 @@ $(function(){
 		var upwd=$("#loginPwd").val();
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/login.do",
+			url:"user/login.do",
 			data:{
 				uname:user,
 				password:upwd
@@ -115,4 +139,6 @@ $(function(){
 	});
 	
 	getInit();
+	
+	
 });

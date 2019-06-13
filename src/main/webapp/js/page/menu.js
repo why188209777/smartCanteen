@@ -3,13 +3,62 @@
  */
 $(function() {
 
-	
+	//初始化餐厅列表
+	function getAllCanteen() {
+		$.ajax({
+			type: "post",
+			url: "canteen/getAllCanteen.do",
+			dataType: "json",
+			success: function(data) {
+				let dom = $("#canteenList");
+				dom.html("");
+				let str = ""; //通用字符串模板
+				for(let i = 0; i < data.length; i++) {
+					str += `
+						<option value="${i+1}">${data[i].cname}</option>
+					`;
+				}
+				dom.append(str);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	}
+
+	//初始化店铺列表
+	function getAllMerchant(cid) {
+		$.ajax({
+			type: "post",
+			url: "merchant/getMerchantByCid.do",
+			data: {
+				cid: cid
+			},
+			dataType: "json",
+			success: function(data) {
+				let dom = $("#storeList");
+				dom.html("");
+				let str = ""; //通用字符串模板
+				for(let i = 0; i < data.length; i++) {
+					str += `
+						<option value="${data[i].mid}">${data[i].mname}</option>
+					`;
+				}
+				dom.append(str);
+			},
+			error: function(error) {
+				console.log(error);
+			}
+		});
+	}
+	getAllCanteen();
+	getAllMerchant(1);
 
 	//初始化商品列表
 	function getFoodByCanteenAndMerchant(cid, mid) {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8080/smartCanteen/food/getFoodByCanteenAndMerchant.do",
+			url: "food/getFoodByCanteenAndMerchant.do",
 			data: {
 				cid: cid,
 				mid: mid

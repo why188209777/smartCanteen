@@ -40,6 +40,59 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 		<script src="js/simpleCart.min.js">
 		</script>
 		<!-- cart -->
+		<style type="text/css">
+			.orderContainer{
+				box-sizing: border-box;
+				width: 100%;
+				height: 200px;
+				border-bottom: 1px solid #CCCCCC;
+				padding: 10PX;
+				box-shadow:0px 0px 5px #888888 ;
+				margin-bottom: 10px;
+			}
+			.orderContainer .orderLeft{
+				float: left;
+				width: 30%;
+				text-align: center;
+			}
+			.orderContainer .orderRight{
+				float: left;
+				width: 70%;
+			}
+			.orderContainer .orderRight p{
+				margin-bottom: 10px;
+				font-size: 16px;
+			}
+			.orderContainer .orderRight p:last-child{
+				margin:0;
+			}
+			.orderContainer .orderRight .orderA{
+				float: right;
+				display: inline-block;
+				width: 100px;
+				height: 30px;
+				background: #FAEBCC;
+				margin-right: 30px;
+				line-height: 30px;
+				text-align: center;
+				color: #FFFFFF;
+				cursor: pointer;
+				text-decoration: none;
+			}
+			.orderContainer .orderRight .orderA:hover{
+				background: #F0AD4E;
+			}
+			.orderImg{
+				width: 150px;
+				height: 150px;
+				transition: width 1s, height 1s;
+				transition-timing-function:ease
+			}
+			.orderImg:hover{
+				width: 160px;
+				height: 160px;
+			}
+		</style>
 	</head>
 
 	<body>
@@ -88,17 +141,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="about.html">about</a>
 						</li>
 						<li>
-							<a href="menu.html" class="active">menus</a>
+							<a href="menu.html">menus</a>
 						</li>
 						<li>
-							<a href="gallery.html">gallery</a>
-						</li>
-						<li>
-							<a href="events.html">events</a>
+							<a href="order.html" class="active">order</a>
 						</li>
 						<li>
 							<a href="contact.html">contact</a>
 						</li>
+						
 					</ul>
 					<!-- script for menu -->
 
@@ -112,38 +163,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			</div>
 		</div>
 		<!--end-banner-->
-		<div class="banner-bottom">
-			<div class="container">
-				<div class="droop-down">
-					<div class="col-md-4 droop">
-						<div class="sort-by">
-							<label>餐厅：</label>
-							<select id=canteenList>
-								<!--餐厅列表-->
-							</select>
-						</div>
-					</div>
-					<div class="col-md-4 droop">
-						<div class="sort-by">
-							<label>店铺：</label>
-							<select id="storeList">
-								<!--店铺列表-->
-							</select>
-						</div>
-					</div>
-					<div class="col-md-4 search">
-						<form style="text-align: center;">
-							<input type="submit" value="搜索" id="searchFood">
-						</form>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-		</div>
 		<div class="content">
 			<div class="menu-section">
 				<div class="container">
-					<h3> food menu</h3>
+					<h3> order list</h3>
 					<div class="menu-grids wow bounceIn animated" data-wow-delay="0.4s" style="visibility: visible; -webkit-animation-delay: 0.4s;">
 						<div class="menu1" id="menu">
 							
