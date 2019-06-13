@@ -4,6 +4,25 @@
 $(function(){
 	var getCode;//验证码
 	
+	//获取验证码倒计时
+	var getCode=document.getElementById("getCode");
+	var countdown = 60;
+	function settime(obj) {
+	    if (countdown == 0) {
+	        obj.removeAttribute("disabled");
+	        obj.innerText="获取验证码";
+	        countdown = 60;
+	        return;
+	    } else {
+	        obj.setAttribute("disabled", true);
+	        obj.innerText="重新发送(" + countdown + ")";
+	        countdown--;
+	    }
+	setTimeout(function() {
+	    settime(obj) }
+	    ,1000)
+	}
+	
 	//获取验证码
 	$("#getCode").on("click",function(event){
 		event.preventDefault();
@@ -12,9 +31,10 @@ $(function(){
 			alert("请输入正确的手机号");
 			return false;
 		}
+		settime(getCode);
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/getSsm.do",
+			url:"getSsm.do",
 			data:{
 				number:phonenum,
 			},
@@ -49,7 +69,7 @@ $(function(){
 		
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/changePassword.do",
+			url:"user/changePassword.do",
 			data:{
 				password:upwd,
 				phoneNum:phonenum
