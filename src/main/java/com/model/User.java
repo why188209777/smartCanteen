@@ -10,6 +10,23 @@ public class User {
 	private String password;
 	private String phonenum;
 	private String address;
+	private int status;  //学生认证情况
+
+	
+	
+	public User(int id, String uname, String idcard, String studentid, String classes, String password, String phonenum,
+			String address, int status) {
+		super();
+		this.id = id;
+		this.uname = uname;
+		this.idcard = idcard;
+		this.studentid = studentid;
+		this.classes = classes;
+		this.password = password;
+		this.phonenum = phonenum;
+		this.address = address;
+		this.status = status;
+	}
 
 	public User(int id, String uname, String idcard, String studentid, String classes, String password, String phonenum,
 			String address) {
@@ -100,10 +117,21 @@ public class User {
 		this.address = address;
 	}
 
+	
+	
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
 	@Override
 	public String toString() {
 		return "User [id=" + id + ", uname=" + uname + ", idcard=" + idcard + ", studentid=" + studentid + ", classes="
-				+ classes + ", password=" + password + ", phonenum=" + phonenum + ", address=" + address + "]";
+				+ classes + ", password=" + password + ", phonenum=" + phonenum + ", address=" + address + ", status="
+				+ status + "]";
 	}
 
 }

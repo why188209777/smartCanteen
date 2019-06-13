@@ -79,4 +79,9 @@ public class UserTest {
 		System.out.println(changePassword);
 	}
 
+	@Test
+	public void applyCertification(){
+		int changePassword = userDao.applyCertification(9);
+		System.out.println(changePassword);
+	}
 }

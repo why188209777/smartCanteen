@@ -73,4 +73,16 @@ public class UserServiceImpl implements UserService {
 		return userDao.getUserByUserId(id);
 	}
 
+	@Override
+	public int applyCertification(int id) {
+		// TODO Auto-generated method stub
+		return userDao.applyCertification(id);
+	}
+
+	@Override
+	public int dealCertification(int status, int id) {
+		// TODO Auto-generated method stub
+		return userDao.dealCertification(status, id);
+	}
+
 }

@@ -96,4 +96,14 @@
 		where
 		phonenum=#{phonenum}
 	</update>
+	
+	<!-- 申请认证，状态为2 -->
+	<update id="applyCertification">
+		update user set status = 2 where id = #{id}
+	</update>
+	
+	<!-- 处理认证 ,1代表通过认证，3代表拒绝认证-->
+	<update id="dealCertification">
+		update user set status = #{status} where id = #{id}
+	</update>
 </mapper>

@@ -32,4 +32,10 @@ public interface UserDao {
 	
 	//修改密码
 	public int changePassword(@Param("password") String password, @Param("phonenum") String phoneNum);
+	
+	//申请认证
+	public int applyCertification(int id);
+	
+	//处理认证
+	public int dealCertification(@Param("status") int status, @Param("id") int id);
 }

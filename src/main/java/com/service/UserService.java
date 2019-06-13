@@ -28,4 +28,8 @@ public interface UserService {
 	public List<User> getUserByConditionAndPage(UserCondition condition, Page page);
 	
 	public int changePassword(String password, String phoneNum);
+	
+	public int applyCertification(int id);
+	
+	public int dealCertification(int status, int id);
 }
