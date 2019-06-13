@@ -23,6 +23,8 @@ public interface OrderService {
 
 	public int getOrderCountByCondition(OrderCondition condition);
 
+	public int updateOrderStatus(Order order);
+	
 	public List<Order> getOrderByConditionAndPage(@Param("condition") OrderCondition condition,
 			@Param("page") Page page);
 }
