@@ -56,7 +56,7 @@ public class UserTest {
 	@Test
 	public void loginTest() {
 		String name = "赵旭尧";
-		String password = "4awaa42";
+		String password = "123456";
 		User user = userDao.login(name, password);
 		System.out.println(user);
 	}

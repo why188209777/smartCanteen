@@ -76,7 +76,7 @@
 				and studentid like '%${condition.studentid}%'
 			</if>
 			<if test="condition.classes!=null">
-				and classes like '%${condition.classes}%'
+				and class like '%${condition.classes}%'
 			</if>
 			<if test="condition.phonenum!=null">
 				and phonenum like '%${condition.phonenum}%'
