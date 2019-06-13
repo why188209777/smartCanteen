@@ -36,7 +36,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			});
 		</script>
 		<!---End-smoth-scrolling---->
+		<style>
+			.point {
+				position: absolute;
+				left: 50%;
+				top: 50%;
+			}
+			
+			.pop {
+				width: 300px;
+				height: 300px;
+				position: absolute;
+				left: -150px;
+				top: -50px;
+				/*border: 1px solid red;*/
+				background: #FFFFFF;
+				box-shadow: 0 0 3px #CCCCCC;
+			}
+			.pop .popTop{
+				height: 80%;
+				padding-top: 100px;
+			}
+			.pop .popBottom{
+				width: 100%;
+				height: 10%;
+				margin: 0 auto;
+				text-align: center;
+				position: absolute;
+				bottom: 0;
+				left: 0;
+				
+			}
+			.pop .popBottom button{
+				width: 100%;
+				height: 100%;
+				border: none;
+				background: #FD9F3E;
+				color: #FFFFFF;
+			}
+			.pop .popBottom button:hover{
+				background: #F0AD4E;
 
+			}
+		</style>
 	</head>
 
 	<body>
@@ -88,11 +130,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<a href="menu.html">menus</a>
 						</li>
 						<li>
+							<a href="order.html">order</a>
+						</li>
+						<!--<li>
 							<a href="gallery.html">gallery</a>
 						</li>
 						<li>
 							<a href="events.html">events</a>
-						</li>
+						</li>-->
 						<li>
 							<a href="contact.html">contact</a>
 						</li>
@@ -128,7 +173,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="wow fadeInRight" data-wow-delay="0.4s">
 									<span>学号<label>*</label></span>
-									<input type="text" id="UserStuID">
+									<input type="text" id="UserStuID" placeholder="请输入你的学号">
 								</div>
 								<div class="wow fadeInRight" data-wow-delay="0.4s">
 									<span>地址<label>*</label></span>
@@ -136,11 +181,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								</div>
 								<div class="wow fadeInRight" data-wow-delay="0.4s">
 									<span>密码<label>*</label></span>
-									<input type="password" id="upwd">
+									<input type="password" id="upwd" placeholder="密码长度不小于6">
 								</div>
 								<div class="wow fadeInRight" data-wow-delay="0.4s">
 									<span>确定密码<label>*</label></span>
-									<input type="password" id="reupwd">
+									<input type="password" id="reupwd" placeholder="请确保两次输入的密码相同">
 								</div>
 								<div class="clearfix"></div>
 								<a class="news-letter" href="#">
@@ -151,13 +196,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<h2>绑定手机</h2>
 								<div class="wow fadeInLeft" data-wow-delay="0.4s">
 									<span>手机<label>*</label></span>
-									<input type="text" id="phonenum">
+									<input type="text" id="phonenum" placeholder="请输入正确手机号码">
 								</div>
 								<div class="wow fadeInRight" data-wow-delay="0.4s">
 									<span>验证码<label>*</label></span>
 									<div style="width: 96%;border: 1px solid #555;margin: 0;">
 										<input type="text" placeholder="验证码" style="width: 80%; border: none;outline-color:rgba(0,0,0,0);" id="code">
-										<a style="color: #41ac52;text-decoration: none;" id="getCode" style="cursor: pointer;">获取验证码</a>
+										<input type="button" id="getCode" value="获取验证码"></button>
 									</div>
 									
 								</div>
@@ -240,7 +285,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="container">
 				<div class="footer-top">
 					<p>Copyright &copy; 2015.Company name All rights reserved.
-						<a target="_blank" href="http://www.17sucai.com/">智能食堂</a>
+						<a target="_blank" href="#">智能食堂</a>
 					</p>
 				</div>
 				<script type="text/javascript">
@@ -264,7 +309,19 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 			</div>
 		</div>
-
+		<div  style="width:100%; height:100%;left:0;top:0; position:fixed;background:rgba(0,0,0,0.3);display: none;" class="boxContainer">
+	        <div class="point">
+	            <div class="pop">
+	            	<div class="popTop">
+	            		<p style="text-align: center;" class="tip"></p>
+	            	</div>
+	            	<div class="popBottom">
+	            		<button class="clodeBox">关闭</button>
+	            	</div>
+	            </div>
+	        </div>
+	    </div>
+	    
 	</body>
 	<script src="js/common/common.js"></script>
 	<script src="js/page/account.js"></script>

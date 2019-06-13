@@ -66,6 +66,7 @@ $(function(){
 	getAllCanteen();
 	getAllMerchant(1);
 	
+	
 	//购物车滑过高亮
 	$("#cartImg").on("mouseover",function(){
 		$(this).attr("src","images/carthover.png");

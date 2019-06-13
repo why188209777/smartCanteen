@@ -79,4 +79,21 @@ public class UserTest {
 		System.out.println(changePassword);
 	}
 
+	@Test
+	public void getCertificationUser() {
+		int pageSize = 5;
+		int status = 0;
+		int count = userDao.getCertificationUserCount(status);
+		System.out.println(count);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(1, pageSize, totalSize);
+		List<User> list = userDao.getCertificationUser(status, page);
+		System.out.println(list);
+	}
+	
+	@Test
+	public void applyCertification(){
+		int changePassword = userDao.applyCertification(9);
+		System.out.println(changePassword);
+	}
 }
