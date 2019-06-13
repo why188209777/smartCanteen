@@ -65,6 +65,15 @@ public class OrderController {
 		System.out.println(list);
 		return list;
 	}
+	
+	@RequestMapping(value = "updateOrderStatus")
+	@ResponseBody
+	public int getOrderByMid(String orderid,int status) {
+		Order order = new Order(orderid,status);
+		int updateOrderStatus = orderService.updateOrderStatus(order);
+		return updateOrderStatus;
+	}
+	
 	@RequestMapping(value = "getOrderByConditionAndPage")
 	@ResponseBody
 	public Object getOrderByConditionAndPage(String startTime, String endTime, int status, int mid, int pageIndex, int pageSize) {

@@ -64,4 +64,9 @@
 	<select id="getOrderByTime" resultType="Order">
 		select * from orders where mid=#{mid} and createtime=#{createtime}
 	</select>
+	
+	<!-- 更新 -->
+	<update id="updateOrderStatus" parameterType="Order">
+		update orders set status=#{status} where orderid=#{orderid}
+	</update>
 </mapper>
