@@ -67,4 +67,10 @@ public class OrderServiceImpl implements OrderService {
 		return orderDao.getOrderByConditionAndPage(condition, page);
 	}
 
+	@Override
+	public int updateOrderStatus(Order order) {
+		// TODO Auto-generated method stub
+		return orderDao.updateOrderStatus(order);
+	}
+
 }

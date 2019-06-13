@@ -10,6 +10,12 @@ public class Order {
 	private int userid;
 	private int mid;
 	
+	public Order(String orderid, int status) {
+		super();
+		this.orderid = orderid;
+		this.status = status;
+	}
+
 	public Order(String orderid, String createtime, String remark, int status, double total, int userid, int mid) {
 		super();
 		this.orderid = orderid;
