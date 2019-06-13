@@ -49,7 +49,6 @@ body{
 }
 .login {
   float: left;
-  margin-left: 50px;
 }
 .header-right{
  float: right;
@@ -68,8 +67,8 @@ a.simpleCart_empty {
   color: #CDCDCD;
 }
 .cart.box_1 {
-  float: right;
-  width: 44%;
+  float: left;
+  width: 40%;
 }
 .cart.box_1 img {
   margin-left: 4px;
@@ -953,6 +952,7 @@ img.zoom-img:hover {
 	  margin-bottom: 1em;
 }
 .google-map iframe {
+	display: none;
 	width: 100%;
 	min-height: 400px;
 	border: none;

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html class="x-admin-sm">
+
+	<head>
+		<meta charset="UTF-8">
+		<title>欢迎页面-X-admin2.2</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
+		<link rel="stylesheet" href="./css/font.css">
+		<link rel="stylesheet" href="./css/xadmin.css">
+		<script type="text/javascript" src="js/jquery.min.js" ></script>
+		<script src="./lib/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="./js/xadmin.js"></script>
+		<!--[if lt IE 9]>
+          <script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+          <script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+	</head>
+	<script type="text/javascript">
+	</script>
+
+	<body>
+		<div class="layui-fluid">
+			<div class="layui-row layui-col-space15">
+
+				<div class="layui-col-sm12 layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">最新一周总交易额</div>
+						<div class="layui-card-body" style="min-height: 280px;">
+							<div id="main1" class="layui-col-sm12" style="height: 300px;"></div>
+
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-sm12 layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">最新一周订单增长量</div>
+						<div class="layui-card-body" style="min-height: 280px;">
+							<div id="main2" class="layui-col-sm12" style="height: 300px;"></div>
+
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-sm12 layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">每日订单数</div>
+						<div class="layui-card-body" style="min-height: 280px;">
+							<div id="main3" class="layui-col-sm12" style="height: 300px;"></div>
+
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-sm12 layui-col-md6">
+					<div class="layui-card">
+						<div class="layui-card-header">每日目标达成</div>
+						<div class="layui-card-body" style="min-height: 280px;">
+							<div id="main4" class="layui-col-sm12" style="height: 300px;"></div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		</div>
+
+		<script src="https://cdn.bootcss.com/echarts/4.2.1-rc1/echarts.min.js"></script>
+		<script type="text/javascript">
+			var sum=0;
+			var sum2=0;
+			var sum3=0
+			var storage=window.localStorage;
+			$(function() { // 初始化内容
+				var num = 0;
+				var num2 = 0;
+				var num3 = 0;
+				var mid = sessionStorage.getItem('mid');
+				var time = new Date()
+				var year = time.getFullYear();
+				var month = time.getMonth();
+				var date3 = time.getDate();
+				var fullmonth = month+1;
+				var date2 = date3-1;
+				var date1 = date3-2
+				var createtime1 = year+"-0"+fullmonth+"-"+date1;
+				var createtime2 = year+"-0"+fullmonth+"-"+date2;
+				var createtime3 = year+"-0"+fullmonth+"-"+date3;
+				console.log(createtime3);
+				console.log(createtime2);
+				console.log(createtime1);
+				$.ajax({
+					type: "POST",
+					url: "../order/getOrderByTime.do",
+					data: {
+						mid: mid,
+						createtime: createtime1
+					},
+					dataType: "json",
+					success: function(data) {
+						$(data).each(function(index, order) {
+							var total = order.total;
+							sum += total;
+							num += 1;
+						});
+						console.log(sum);
+						storage["a"]=sum;
+						storage["c"]=num;
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				})
+				$.ajax({
+					type: "POST",
+					url: "../order/getOrderByTime.do",
+					data: {
+						mid: mid,
+						createtime: createtime2
+					},
+					dataType: "json",
+					success: function(data) {
+						$(data).each(function(index, order) {
+							var total = order.total;
+							sum2 += total;
+							num2 +=1;
+						});
+						storage["b"]=sum2;
+						storage["d"]=num2;
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				})
+				
+				
+				$.ajax({
+					type: "POST",
+					url: "../order/getOrderByTime.do",
+					data: {
+						mid: mid,
+						createtime: createtime3
+					},
+					dataType: "json",
+					success: function(data) {
+						$(data).each(function(index, order) {
+							var total = order.total;
+							sum3 += total;
+							num3 += 1;
+							console.log(num3);
+						});
+						console.log(num3);
+						storage["e"]=sum3;
+						storage["f"]=num3;
+					},
+					error: function(data) {
+						console.log(data)
+					}
+				})
+			});
+			var a=storage["a"];
+			var b=storage["b"];
+			var c=storage["c"];
+			var d=storage["d"];
+			var e=storage["e"];
+			var f=storage["f"];
+				// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main1'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				grid: {
+					top: '5%',
+					right: '1%',
+					left: '1%',
+					bottom: '10%',
+					containLabel: true
+				},
+				tooltip: {
+					trigger: 'axis'
+				},
+				xAxis: {
+					type: 'category',
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				},
+				yAxis: {
+					type: 'value'
+				},
+				series: [{
+					name: '营业额',
+					data: [50, a, b, e],
+					type: 'line',
+					smooth: true
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main2'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				tooltip: {
+					trigger: 'axis',
+					axisPointer: {
+						type: 'cross',
+						label: {
+							backgroundColor: '#6a7985'
+						}
+					}
+				},
+				grid: {
+					top: '5%',
+					right: '2%',
+					left: '1%',
+					bottom: '10%',
+					containLabel: true
+				},
+				xAxis: [{
+					type: 'category',
+					boundaryGap: false,
+					data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+				}],
+				yAxis: [{
+					type: 'value'
+				}],
+				series: [{
+					name: '订单数',
+					type: 'line',
+					areaStyle: {
+						normal: {}
+					},
+					data: [1, c, d, f],
+					smooth: true
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main3'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				tooltip: {
+					trigger: 'item',
+					formatter: "{a} <br/>{b} : {c} ({d}%)"
+				},
+				legend: {
+					orient: 'vertical',
+					left: 'left',
+					data: ['直接访问', '邮件营销', '联盟广告', '视频广告', '搜索引擎']
+				},
+				series: [{
+					name: '一日订单总数',
+					type: 'pie',
+					radius: '55%',
+					center: ['50%', '60%'],
+					data: [{
+						value: c,
+						name: '前天'
+					}, {
+						value: d,
+						name: '昨天'
+					},{
+						value: f,
+						name: '今天'
+					}],
+					itemStyle: {
+						emphasis: {
+							shadowBlur: 10,
+							shadowOffsetX: 0,
+							shadowColor: 'rgba(0, 0, 0, 0.5)'
+						}
+					}
+				}]
+			};
+
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+
+			// 基于准备好的dom，初始化echarts实例
+			var myChart = echarts.init(document.getElementById('main4'));
+
+			// 指定图表的配置项和数据
+			var option = {
+				tooltip: {
+					formatter: "{a} <br/>{b} : {c}%"
+				},
+				series: [{
+					name: '销售额达到量',
+					type: 'gauge',
+					detail: {
+						formatter: '{value}%'
+					},
+					data: [{
+						value: 30,
+						name: '今日已达到'
+					}]
+				}]
+			};
+			// 使用刚指定的配置项和数据显示图表。
+			myChart.setOption(option);
+		</script>
+		<script>
+			var _hmt = _hmt || [];
+			(function() {
+				var hm = document.createElement("script");
+				hm.src = "https://hm.baidu.com/hm.js?b393d153aeb26b46e9431fabaf0f6190";
+				var s = document.getElementsByTagName("script")[0];
+				s.parentNode.insertBefore(hm, s);
+			})();
+		</script>
+	</body>
+
+</html>
