@@ -28,7 +28,7 @@ $(function(){
 		}
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/addUser.do",
+			url:"user/addUser.do",
 			data:{
 				uname:uname,
 				studentid:userStuID,
@@ -66,7 +66,7 @@ $(function(){
 		}
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/getSsm.do",
+			url:"getSsm.do",
 			data:{
 				number:phonenum,
 			},

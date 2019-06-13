@@ -19,7 +19,7 @@ $(function(){
 	function getAllCanteen() {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8080/smartCanteen/canteen/getAllCanteen.do",
+			url: "canteen/getAllCanteen.do",
 			dataType: "json",
 			success: function(data) {
 				let dom = $("#canteenList");
@@ -42,7 +42,7 @@ $(function(){
 	function getAllMerchant(cid) {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8080/smartCanteen/merchant/getMerchantByCid.do",
+			url: "merchant/getMerchantByCid.do",
 			data: {
 				cid: cid
 			},

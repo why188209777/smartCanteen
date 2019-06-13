@@ -14,7 +14,7 @@ $(function(){
 		}
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/getSsm.do",
+			url:"getSsm.do",
 			data:{
 				number:phonenum,
 			},
@@ -49,7 +49,7 @@ $(function(){
 		
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/changePassword.do",
+			url:"user/changePassword.do",
 			data:{
 				password:upwd,
 				phoneNum:phonenum

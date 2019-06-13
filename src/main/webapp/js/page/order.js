@@ -40,7 +40,7 @@ $(function(){
 		function addOrder() {
 			$.ajax({
 				type: "post",
-				url: "http://localhost:8080/smartCanteen/order/addOrder.do",
+				url: "order/addOrder.do",
 				data: {
 					orderid: out_trade_no,
 					createtime: createtime,

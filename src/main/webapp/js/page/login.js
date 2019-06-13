@@ -20,7 +20,7 @@ $(function(){
 	function getUserInfo(userid){
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/getUserByUserId.do",
+			url:"user/getUserByUserId.do",
 			data:{
 				id:userid,
 			},
@@ -80,7 +80,7 @@ $(function(){
 		var upwd=$("#loginPwd").val();
 		$.ajax({
 			type:"post",
-			url:"http://localhost:8080/smartCanteen/user/login.do",
+			url:"user/login.do",
 			data:{
 				uname:user,
 				password:upwd

@@ -9,7 +9,7 @@ $(function() {
 	function getFoodByCanteenAndMerchant(cid, mid) {
 		$.ajax({
 			type: "post",
-			url: "http://localhost:8080/smartCanteen/food/getFoodByCanteenAndMerchant.do",
+			url: "food/getFoodByCanteenAndMerchant.do",
 			data: {
 				cid: cid,
 				mid: mid
