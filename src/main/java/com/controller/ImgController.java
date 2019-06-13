@@ -38,7 +38,7 @@ public class ImgController {
 				String originalName = file.getOriginalFilename();
 				prefix = originalName.substring(originalName.lastIndexOf(".") + 1);
 				//dateStr = new SimpleDateFormat("yyyyMMddHHmmss").format(Calendar.getInstance().getTime());
-				String filepath = request.getServletContext().getRealPath("/web/images/foodimg") + File.separator + imgName + "."
+				String filepath = request.getServletContext().getRealPath("/images/foodimg") + File.separator + imgName + "."
 						+ prefix;
 				filepath = filepath.replace("\\", "/");
 				File files = new File(filepath);
@@ -62,7 +62,7 @@ public class ImgController {
 			}
 		}
 		Map<String, Object> map = new HashMap<>();
-		map.put("src", "../web/images/foodimg/" + imgName + "." + prefix);
+		map.put("src", "../images/foodimg/" + imgName + "." + prefix);
 		return map;
 	}
 }
