@@ -74,6 +74,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public int getCertificationUserCount(int status) {
+		// TODO Auto-generated method stub
+		return userDao.getCertificationUserCount(status);
+	}
+
+	@Override
+	public List<User> getCertificationUser(int status, Page page) {
+		// TODO Auto-generated method stub
+		return userDao.getCertificationUser(status, page);
+	}
+
+	@Override
 	public int applyCertification(int id) {
 		// TODO Auto-generated method stub
 		return userDao.applyCertification(id);

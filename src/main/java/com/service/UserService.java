@@ -18,7 +18,7 @@ public interface UserService {
 	public User getUserByStudentId(String studentId);
 
 	public User getUserByUserId(int id);
-	
+
 	public List<User> getAllUser();
 
 	public User login(String name, String password);
@@ -26,10 +26,14 @@ public interface UserService {
 	public int getUserCountByCondition(UserCondition condition);
 
 	public List<User> getUserByConditionAndPage(UserCondition condition, Page page);
-	
+
 	public int changePassword(String password, String phoneNum);
-	
+
+	public int getCertificationUserCount(int status);
+
+	public List<User> getCertificationUser(int status, Page page);
+
 	public int applyCertification(int id);
-	
+
 	public int dealCertification(int status, int id);
 }

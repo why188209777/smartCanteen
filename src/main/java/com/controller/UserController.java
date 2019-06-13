@@ -116,6 +116,20 @@ public class UserController {
 		return changePassword == 0 ? false : true;
 	}
 
+	
+	@RequestMapping(value = "getCertificationUser")
+	@ResponseBody
+	public Object getCertificationUser(int status, int pageIndex, int pageSize) {
+		int count = userService.getCertificationUserCount(status);
+		int totalSize = count % pageSize == 0 ? count / pageSize : count / pageSize + 1;
+		Page page = new Page(pageIndex, pageSize, totalSize);
+		List<User> list = userService.getCertificationUser(status, page);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("page", page);
+		map.put("list", list);
+		return map;
+	}
+	
 	@RequestMapping(value = "applyCertification")
 	@ResponseBody
 	public boolean applyCertification(int id) {

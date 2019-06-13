@@ -10,10 +10,8 @@ public class User {
 	private String password;
 	private String phonenum;
 	private String address;
-	private int status;  //学生认证情况
+	private int status; // 学生认证情况
 
-	
-	
 	public User(int id, String uname, String idcard, String studentid, String classes, String password, String phonenum,
 			String address, int status) {
 		super();
@@ -117,8 +115,6 @@ public class User {
 		this.address = address;
 	}
 
-	
-	
 	public int getStatus() {
 		return status;
 	}
