@@ -39,7 +39,7 @@
 			$(document).on("click", "#submitBtn", function() {
 				$.ajax({
 					type: "POST",
-					url: "http://chongya.cf:8080/admin/login.do",
+					url: "../admin/login.do",
 					data: $("form").serialize(),
 					dataType: "json",
 					success: function(data) {
