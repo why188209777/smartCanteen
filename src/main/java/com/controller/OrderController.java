@@ -68,7 +68,7 @@ public class OrderController {
 	
 	@RequestMapping(value = "updateOrderStatus")
 	@ResponseBody
-	public int getOrderByMid(String orderid,int status) {
+	public int updateOrderStatus(String orderid,int status) {
 		Order order = new Order(orderid,status);
 		int updateOrderStatus = orderService.updateOrderStatus(order);
 		return updateOrderStatus;

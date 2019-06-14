@@ -37,6 +37,7 @@
 			$(document).on("click", "#submitBtn", function() {
 				$.ajax({
 					type: "POST",
+					url: "../admin/login.do",
 					data: $("form").serialize(),
 					dataType: "json",
 					success: function(data) {
