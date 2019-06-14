@@ -7,11 +7,12 @@
 		<meta name="renderer" content="webkit">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 		<meta name="viewport" content="width=device-width,user-scalable=yes, minimum-scale=0.4, initial-scale=0.8,target-densitydpi=low-dpi" />
-		<link rel="stylesheet" href="./css/font.css">
-		<link rel="stylesheet" href="./css/xadmin.css">
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script src="./lib/layui/layui.js" charset="utf-8"></script>
-		<script type="text/javascript" src="./js/xadmin.js"></script>
+		<link rel="stylesheet" href="http://chongya.cf:8080/admin/css/font.css">
+		<link rel="stylesheet" href="http://chongya.cf:8080/admin/css/xadmin.css">
+		<!-- <link rel="stylesheet" href="./css/theme5.css"> -->
+		<script src="http://chongya.cf:8080/admin/lib/layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="http://chongya.cf:8080/admin/js/xadmin.js"></script>
+		<script type="text/javascript" src="http://chongya.cf:8080/admin/js/jquery.min.js" ></script>
 
 	</head>
 
@@ -36,7 +37,7 @@
 							<form class="layui-form layui-col-space5">
 								<div class="layui-input-inline layui-show-xs-block">
 									<input type="text" name="merchantName" placeholder="请输入商家名称" autocomplete="off" class="layui-input"></div>
-								<div class="layui-input-inline layui-show-xs-block">
+								<div class="layui-input-inline layui-show-xs-block layui-form" lay-filter="selFilter">
 									<select id="category">
 									</select>
 								</div>
@@ -47,7 +48,7 @@
 							</form>
 						</div>
 						<div class="layui-card-header">
-							<button class="layui-btn" onclick="xadmin.open('添加用户','./merchant-add.html',400,270)">
+							<button class="layui-btn" onclick="xadmin.open('添加用户','./merchant-add.html',400,400)">
 								<i class="layui-icon"></i>添加</button></div>
 						<div class="layui-card-body ">
 							<table class="layui-table layui-form">
@@ -76,29 +77,27 @@
 		</div>
 	</body>
 	<script>
-		layui.use(['laydate', 'form'],
-			function() {
-				var laydate = layui.laydate;
+	
+		layui.use(['laydate', 'form'], function() {
+			var laydate = layui.laydate;
 
-				//执行一个laydate实例
-				laydate.render({
-					elem: '#start' //指定元素
-				});
-
-				//执行一个laydate实例
-				laydate.render({
-					elem: '#end' //指定元素
-				});
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#start' //指定元素
 			});
 
-
-
+			//执行一个laydate实例
+			laydate.render({
+				elem: '#end' //指定元素
+			});
+		});
+			
 		/*用户-删除*/
 		function member_del(obj, id) {
 			layer.confirm('确认要删除吗？', function(index) {
 				$.ajax({
 					type: "POST",
-					url: "../merchant/delMerchant.do",
+					url: "http://chongya.cf:8080/merchant/delMerchant.do",
 					data: {
 						mid: id
 					},
@@ -122,19 +121,17 @@
 		}
 		
 		$(function() { // 初始化内容
-			initPage(1);
-			
 			initCategory();
+		
+			initPage(1);	
 		});
-		
-		var storage = window.localStorage;
-		
+				
 		function initPage(pageIndex) { // 初始化内容
 			var pageSize = 5;
 			var mname = $("input[name=merchantName]").val();
 			$.ajax({
 				type: "POST",
-				url: "../merchant/getMerchantByConditionAndPage.do",
+				url: "http://chongya.cf:8080/merchant/getMerchantByConditionAndPage.do",
 				data: {
 					mname:mname,
 					cid:$('#category option:selected') .val(),
@@ -147,7 +144,7 @@
 					var html;
 					$(".select").html("");
 					/* 列表遍历 */
-					var categoryList = JSON.parse(storage['categoryList']);
+					var categoryList = JSON.parse(sessionStorage.getItem('categoryList'));
 					$(data.list).each(function(index, merchant) {
 						var mid = merchant.mid;
 						var mname = merchant.mname;
@@ -192,16 +189,22 @@
 		function initCategory(){
 			$.ajax({
 				type: "POST",
-				url: "../canteen/getAllCanteen.do",
+				url: "http://chongya.cf:8080/canteen/getAllCanteen.do",
 				dataType: "json",
 				success: function(data) {
 					console.log(data);
-					storage['categoryList'] = JSON.stringify(data);
+					sessionStorage.setItem('categoryList', JSON.stringify(data));
+					console.log('存入session:' + sessionStorage.getItem('categoryList'));
 					var html = `<option value="0">所属食堂</option>`;
 					for (var i = 0; i < data.length; i ++){
 						html += `<option value="${i + 1}">${data[i].cname}</option>`;
 					}
 					$("#category").html(html);
+					layui.use('form', function() {
+						var form = layui.form; //只有执行了这一步，部分表单元素才会自动修饰成功
+						form.render();
+					});
+					//form.render('category', 'selFilter');
 				},
 				error: function(data) {
 					console.log(data);
