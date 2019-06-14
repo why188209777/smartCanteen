@@ -27,10 +27,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAhmkXrMiL9gTo/f+5ED6LNb2kXIaDlG615U4uaiKIobJ1yu+Yr7OAxpsA40IAmi98IPO6xOdZSoDxfWbI7UKP/Qej9dWHPxshLg2RkHvwT+H+7QbrmgFxyTVeuQnWVxDivwo9CNPpWW3MBHefxXd3/y0LzAKTSqQ8KQHYoDC2kh7Nb86J6qkaTNbu+zrr1og8j5tlK43F0mo+dwRSzxjRS52/SkFd/DYpmDlsEOhZeSXT+p6a8/IT+/vCvprWLoXeJWduSVe/lbbQ9pfnF+PZv3roG5ito4g/08rt7/ZXYnqiy0t3EcF/Rk5EDtsolJFNd7oVBaq60SB9VGHzaGdJdQIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8080/smartCanteen/alipay/notify_url.jsp";
+	public static String notify_url = "http://chongya.cf:8080/alipay/notify_url.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8080/smartCanteen/alipay/return_url.jsp";
+	public static String return_url = "http://chongya.cf:8080/alipay/return_url.jsp";
 
 	// 签名方式
 	public static String sign_type = "RSA2";

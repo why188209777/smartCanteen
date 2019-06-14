@@ -65,6 +65,7 @@ $(function() {
 			},
 			dataType: "json",
 			success: function(data) {
+				console.log("12");
 				getAllFoods(data);
 			},
 			error: function(error) {
@@ -72,11 +73,8 @@ $(function() {
 			}
 		});
 	}
-
-	/*getAllCanteen();
-	getAllMerchant(1);*/
 	//初始化进来第一家餐厅的第一家店铺
-	getFoodByCanteenAndMerchant(1, 1);
+	getFoodByCanteenAndMerchant(1, 2);
 	//点击餐厅改变店铺列表
 	$(document).on('change', '#canteenList', function(event) {
 		var cid = this.value;
